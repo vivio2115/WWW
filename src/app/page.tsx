@@ -35,7 +35,7 @@ export default function HomePage() {
                 </div>
               </div>
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
-                Chroń siebie i innych przed{" "}
+                Chroń siebie i innych przed{" "}                                                    
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
                   internetowymi oszustami
                 </span>
