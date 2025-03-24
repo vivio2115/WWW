@@ -1,208 +1,403 @@
 "use client";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { useState, useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Info, AlertCircle } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  CreditCard,
+  User2,
+  Calendar,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  Facebook,
+  Info
+} from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-// This would come from a database in a real application
-const SCAMMERS_DATA = [
-  {
-    id: "1",
-    scamType: "Fałszywe ogłoszenie sprzedaży",
-    reportDate: "2023-12-10",
-    contacts: {
-      phone: "500100200",
-      email: "fake.seller@scam-mail.com",
-      bankAccount: "12 3456 7890 1234 5678 9012 3456",
-    },
-    description: "Wystawił ogłoszenie sprzedaży telefonu iPhone 13 Pro na popularnym portalu ogłoszeniowym. Po wpłacie pieniędzy nie wysłał towaru i zablokował kontakt z kupującym.",
-    verified: true,
-    reportCount: 7,
+// Przykładowe dane, to byłyby pobierane z API w prawdziwej aplikacji
+const MOCK_SCAMMERS = Array(50).fill(null).map((_, index) => ({
+  id: `SCAM-${1000 + index}`,
+  name: index % 3 === 0 ? `Oszust ${index + 1}` : index % 5 === 0 ? `Sklep XYZ${index}` : `Jan Kowalski${index}`,
+  contactInfo: {
+    phone: index % 3 === 0 ? `+48 ${500000 + index}` : null,
+    email: index % 2 === 0 ? `scammer${index}@example.com` : null,
+    bankAccount: index % 4 === 0 ? `PL ${61 + index} 1090 ${1000 + index} ${1000 + index} ${1000 + index} ${1000 + index}` : null,
+    socialMedia: index % 7 === 0 ? `@scammer${index}` : null,
   },
-  {
-    id: "2",
-    scamType: "Oszustwo przy zakupie",
-    reportDate: "2024-01-15",
-    contacts: {
-      phone: "600200300",
-      email: "buyer123@fakemail.pl",
-    },
-    description: "Udawał zainteresowanie zakupem roweru. Prosił o wysyłkę za pobraniem, następnie nie odebrał przesyłki. Sprzedający poniósł koszty wysyłki i zwrotu.",
-    verified: true,
-    reportCount: 3,
-  },
-  {
-    id: "3",
-    scamType: "Fałszywa inwestycja",
-    reportDate: "2024-02-20",
-    contacts: {
-      email: "invest.secure@finance-trust.net",
-      website: "crypto-invest-pl.net",
-    },
-    description: "Prowadzi stronę oferującą inwestycje w kryptowaluty z gwarantowanym zyskiem 15% miesięcznie. Po wpłacie pieniędzy nie można ich wypłacić, a kontakt z serwisem jest niemożliwy.",
-    verified: true,
-    reportCount: 15,
-  },
-  {
-    id: "4",
-    scamType: "Phishing",
-    reportDate: "2024-03-05",
-    contacts: {
-      email: "support@allegro-secure.co",
-      website: "allegro-secure-payment.co",
-    },
-    description: "Wysyła e-maile podszywające się pod serwis Allegro z informacją o problemie z płatnością. Link w e-mailu prowadzi do fałszywej strony wyłudzającej dane logowania i dane karty.",
-    verified: true,
-    reportCount: 23,
-  },
-  {
-    id: "5",
-    scamType: "Oszustwo na portalu randkowym",
-    reportDate: "2024-03-12",
-    contacts: {
-      phone: "700300400",
-      socialMedia: "@johny.american.soldier",
-    },
-    description: "Na portalu randkowym podszywa się pod amerykańskiego żołnierza. Nawiązuje bliskie relacje, a następnie prosi o pomoc finansową na rzekomy powrót do Polski. Po otrzymaniu pieniędzy zrywa kontakt.",
-    verified: false,
-    reportCount: 1,
-  },
-];
+  description: `Oszust internetowy prowadzący działalność związaną z ${index % 3 === 0 ? "sprzedażą podrobionych ubrań" : index % 4 === 0 ? "fejkową loterią" : "wyłudzaniem przedpłat za nieistniejące produkty"}. Zgłoszony ${1 + (index % 5)} razy w naszej bazie.`,
+  reportDate: new Date(Date.now() - (index * 86400000)).toISOString().split('T')[0],
+  reportCount: 1 + (index % 5),
+  categoryType: index % 3 === 0 ? "individual" : "shop",
+  scamType: index % 4 === 0 ? "fake-product" : index % 5 === 0 ? "advance-fee" : "phishing",
+}));
+
+// Typy oszustw
+const scamTypes = {
+  "fake-product": { label: "Fałszywe produkty", color: "bg-red-500/10 text-red-500" },
+  "advance-fee": { label: "Wyłudzanie przedpłat", color: "bg-orange-500/10 text-orange-500" },
+  "phishing": { label: "Phishing", color: "bg-yellow-500/10 text-yellow-500" },
+  "investment": { label: "Fałszywe inwestycje", color: "bg-blue-500/10 text-blue-500" },
+  "other": { label: "Inne", color: "bg-zinc-500/10 text-zinc-500" }
+};
 
 export default function ScammersList() {
+  const [scammers, setScammers] = useState(MOCK_SCAMMERS);
+  const [filteredScammers, setFilteredScammers] = useState(MOCK_SCAMMERS);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedScammer, setSelectedScammer] = useState<any>(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    category: "all", // "all", "individual", "shop"
+    scamType: "all", // "all", "fake-product", "advance-fee", etc.
+    timeRange: "all", // "all", "week", "month", "year"
+  });
+
+  // Liczba elementów na stronę
+  const itemsPerPage = 10;
+
+  // Całkowita liczba stron
+  const totalPages = Math.ceil(filteredScammers.length / itemsPerPage);
+
+  // Filtry i wyszukiwanie
+  useEffect(() => {
+    let results = scammers;
+
+    // Filtrowanie według kategorii
+    if (filters.category !== "all") {
+      results = results.filter(scammer => scammer.categoryType === filters.category);
+    }
+
+    // Filtrowanie według typu oszustwa
+    if (filters.scamType !== "all") {
+      results = results.filter(scammer => scammer.scamType === filters.scamType);
+    }
+
+    // Filtrowanie według czasu
+    if (filters.timeRange !== "all") {
+      const now = new Date();
+      const filterDate = new Date();
+
+      switch (filters.timeRange) {
+        case "week":
+          filterDate.setDate(now.getDate() - 7);
+          break;
+        case "month":
+          filterDate.setMonth(now.getMonth() - 1);
+          break;
+        case "year":
+          filterDate.setFullYear(now.getFullYear() - 1);
+          break;
+      }
+
+      results = results.filter(scammer => {
+        const reportDate = new Date(scammer.reportDate);
+        return reportDate >= filterDate;
+      });
+    }
+
+    // Wyszukiwanie
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      results = results.filter(scammer => {
+        return (
+          (scammer.name && scammer.name.toLowerCase().includes(query)) ||
+          (scammer.contactInfo.phone && scammer.contactInfo.phone.includes(query)) ||
+          (scammer.contactInfo.email && scammer.contactInfo.email.toLowerCase().includes(query)) ||
+          (scammer.contactInfo.bankAccount && scammer.contactInfo.bankAccount.includes(query)) ||
+          (scammer.contactInfo.socialMedia && scammer.contactInfo.socialMedia.toLowerCase().includes(query)) ||
+          scammer.description.toLowerCase().includes(query)
+        );
+      });
+    }
+
+    setFilteredScammers(results);
+    setCurrentPage(1); // Reset do pierwszej strony po zmianie filtrów
+  }, [scammers, searchQuery, filters]);
+
+  // Pobranie scammerów dla bieżącej strony
+  const getCurrentPageScammers = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, filteredScammers.length);
+    return filteredScammers.slice(startIndex, endIndex);
+  };
+
+  // Obsługa paginacji
+  const goToPage = (page: number) => {
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+    setCurrentPage(page);
+  };
+
+  const showScammerDetails = (scammer: any) => {
+    setSelectedScammer(scammer);
+    setIsDetailsOpen(true);
+  };
+
+  // Renderowanie znacznika typu oszustwa
+  const renderScamType = (type: string) => {
+    const scamType = scamTypes[type as keyof typeof scamTypes] || scamTypes.other;
+    return (
+      <Badge className={`${scamType.color} py-1`}>
+        {scamType.label}
+      </Badge>
+    );
+  };
+
   return (
-    <div>
-      <Table className="border border-zinc-800">
-        <TableHeader className="bg-zinc-900">
-          <TableRow className="border-zinc-800 hover:bg-zinc-800">
-            <TableHead className="text-zinc-300">Typ oszustwa</TableHead>
-            <TableHead className="text-zinc-300">Data zgłoszenia</TableHead>
-            <TableHead className="text-zinc-300">Dane kontaktowe</TableHead>
-            <TableHead className="text-right text-zinc-300">Liczba zgłoszeń</TableHead>
-            <TableHead className="text-right text-zinc-300">Szczegóły</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {SCAMMERS_DATA.map((scammer) => (
-            <TableRow key={scammer.id} className="border-zinc-800 hover:bg-zinc-800">
-              <TableCell className="font-medium text-white">
-                <div className="flex flex-col">
-                  {scammer.scamType}
-                  {scammer.verified && (
-                    <Badge variant="destructive" className="w-fit mt-1 bg-red-900 text-red-100 hover:bg-red-800">
-                      Zweryfikowany
-                    </Badge>
-                  )}
-                </div>
-              </TableCell>
-              <TableCell className="text-zinc-300">{formatDate(scammer.reportDate)}</TableCell>
-              <TableCell>
-                <div className="text-sm space-y-1 text-zinc-400">
-                  {scammer.contacts.phone && (
-                    <p><span className="font-medium text-zinc-300">Tel:</span> {scammer.contacts.phone}</p>
-                  )}
-                  {scammer.contacts.email && (
-                    <p><span className="font-medium text-zinc-300">Email:</span> {scammer.contacts.email}</p>
-                  )}
-                  {scammer.contacts.bankAccount && (
-                    <p><span className="font-medium text-zinc-300">Konto:</span> {scammer.contacts.bankAccount}</p>
-                  )}
-                  {scammer.contacts.website && (
-                    <p><span className="font-medium text-zinc-300">WWW:</span> {scammer.contacts.website}</p>
-                  )}
-                  {scammer.contacts.socialMedia && (
-                    <p><span className="font-medium text-zinc-300">Social:</span> {scammer.contacts.socialMedia}</p>
-                  )}
-                </div>
-              </TableCell>
-              <TableCell className="text-right">
-                <span className="font-semibold text-white">{scammer.reportCount}</span>
-              </TableCell>
-              <TableCell className="text-right">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="ghost" size="icon" className="text-zinc-300 hover:text-white hover:bg-zinc-800">
-                      <Info className="h-4 w-4" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="bg-zinc-900 border-zinc-800">
-                    <DialogHeader>
-                      <DialogTitle className="flex items-center gap-2 text-white">
-                        <AlertCircle className="h-5 w-5 text-red-500" />
-                        {scammer.scamType}
-                      </DialogTitle>
-                      <DialogDescription className="text-zinc-400">
-                        Zgłoszony {formatDate(scammer.reportDate)} • {scammer.reportCount} {getReportLabel(scammer.reportCount)}
-                      </DialogDescription>
-                    </DialogHeader>
+    <div className="space-y-6">
+      {/* Filtry */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="col-span-1 md:col-span-2">
+          <select
+            className="w-full bg-zinc-800 border-zinc-700 rounded-md text-white p-2 focus:ring-red-500 focus:border-red-500"
+            onChange={(e) => setFilters({...filters, category: e.target.value})}
+            value={filters.category}
+          >
+            <option value="all">Wszystkie kategorie</option>
+            <option value="individual">Osoby prywatne</option>
+            <option value="shop">Sklepy / Firmy</option>
+          </select>
+        </div>
+        <div>
+          <select
+            className="w-full bg-zinc-800 border-zinc-700 rounded-md text-white p-2 focus:ring-red-500 focus:border-red-500"
+            onChange={(e) => setFilters({...filters, scamType: e.target.value})}
+            value={filters.scamType}
+          >
+            <option value="all">Wszystkie typy oszustw</option>
+            <option value="fake-product">Fałszywe produkty</option>
+            <option value="advance-fee">Wyłudzanie przedpłat</option>
+            <option value="phishing">Phishing</option>
+            <option value="investment">Fałszywe inwestycje</option>
+            <option value="other">Inne</option>
+          </select>
+        </div>
+        <div>
+          <select
+            className="w-full bg-zinc-800 border-zinc-700 rounded-md text-white p-2 focus:ring-red-500 focus:border-red-500"
+            onChange={(e) => setFilters({...filters, timeRange: e.target.value})}
+            value={filters.timeRange}
+          >
+            <option value="all">Wszystkie daty</option>
+            <option value="week">Ostatni tydzień</option>
+            <option value="month">Ostatni miesiąc</option>
+            <option value="year">Ostatni rok</option>
+          </select>
+        </div>
+      </div>
 
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="font-medium mb-1 text-white">Dane oszusta:</h3>
-                        <div className="text-sm space-y-1 text-zinc-400">
-                          {scammer.contacts.phone && (
-                            <p><span className="font-medium text-zinc-300">Telefon:</span> {scammer.contacts.phone}</p>
-                          )}
-                          {scammer.contacts.email && (
-                            <p><span className="font-medium text-zinc-300">E-mail:</span> {scammer.contacts.email}</p>
-                          )}
-                          {scammer.contacts.bankAccount && (
-                            <p><span className="font-medium text-zinc-300">Konto bankowe:</span> {scammer.contacts.bankAccount}</p>
-                          )}
-                          {scammer.contacts.website && (
-                            <p><span className="font-medium text-zinc-300">Strona WWW:</span> {scammer.contacts.website}</p>
-                          )}
-                          {scammer.contacts.socialMedia && (
-                            <p><span className="font-medium text-zinc-300">Media społecznościowe:</span> {scammer.contacts.socialMedia}</p>
-                          )}
-                        </div>
+      {/* Lista scammerów */}
+      <div className="space-y-4">
+        {filteredScammers.length === 0 ? (
+          <div className="text-center py-12 text-zinc-500">
+            Nie znaleziono żadnych oszustów spełniających kryteria wyszukiwania.
+          </div>
+        ) : (
+          <>
+            {getCurrentPageScammers().map((scammer) => (
+              <Card key={scammer.id} className="bg-zinc-900 border-zinc-800 overflow-hidden hover:bg-zinc-850 transition-colors">
+                <CardContent className="p-4">
+                  <div className="flex flex-col md:flex-row gap-4 justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        {renderScamType(scammer.scamType)}
+                        <span className="text-xs text-zinc-500">ID: {scammer.id}</span>
                       </div>
+                      <h3 className="font-semibold text-white mb-2">{scammer.name}</h3>
 
-                      <div>
-                        <h3 className="font-medium mb-1 text-white">Opis oszustwa:</h3>
-                        <p className="text-sm text-zinc-400">{scammer.description}</p>
-                      </div>
-
-                      <div className="bg-zinc-800 p-3 rounded-md text-sm">
-                        <p className="text-zinc-400">
-                          Pamiętaj, aby zawsze weryfikować dane kontrahentów przed dokonaniem transakcji.
-                          Jeśli posiadasz więcej informacji o tym oszuście, zgłoś je poprzez formularz zgłoszeniowy.
-                        </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {scammer.contactInfo.phone && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <Phone className="h-4 w-4 text-zinc-400" />
+                            <span className="text-zinc-300">{scammer.contactInfo.phone}</span>
+                          </div>
+                        )}
+                        {scammer.contactInfo.email && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <Mail className="h-4 w-4 text-zinc-400" />
+                            <span className="text-zinc-300 truncate">{scammer.contactInfo.email}</span>
+                          </div>
+                        )}
+                        {scammer.contactInfo.bankAccount && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <CreditCard className="h-4 w-4 text-zinc-400" />
+                            <span className="text-zinc-300 font-mono text-xs truncate">{scammer.contactInfo.bankAccount}</span>
+                          </div>
+                        )}
+                        {scammer.contactInfo.socialMedia && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <Facebook className="h-4 w-4 text-zinc-400" />
+                            <span className="text-zinc-300">{scammer.contactInfo.socialMedia}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </DialogContent>
-                </Dialog>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+
+                    <div className="flex flex-col md:items-end gap-2">
+                      <div className="flex items-center gap-1 text-sm text-zinc-400">
+                        <Calendar className="h-4 w-4" />
+                        <span>Zgłoszony: {scammer.reportDate}</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-sm text-zinc-400">
+                        <AlertTriangle className="h-4 w-4 text-red-500" />
+                        <span>Liczba zgłoszeń: <strong className="text-red-500">{scammer.reportCount}</strong></span>
+                      </div>
+                      <Button
+                        variant="outline"
+                        className="mt-2 border-zinc-700 hover:bg-zinc-800 text-sm"
+                        onClick={() => showScammerDetails(scammer)}
+                      >
+                        <Info className="h-4 w-4 mr-1" /> Szczegóły oszustwa
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </>
+        )}
+      </div>
+
+      {/* Paginacja */}
+      {filteredScammers.length > 0 && (
+        <div className="flex items-center justify-between pt-4 border-t border-zinc-800">
+          <div className="text-sm text-zinc-500">
+            Wyświetlanie {Math.min(filteredScammers.length, (currentPage - 1) * itemsPerPage + 1)}-{Math.min(currentPage * itemsPerPage, filteredScammers.length)} z {filteredScammers.length} wyników
+          </div>
+          <div className="flex items-center gap-1">
+            <Button
+              variant="outline"
+              size="icon"
+              className="w-8 h-8 border-zinc-700 hover:bg-zinc-800"
+              onClick={() => goToPage(1)}
+              disabled={currentPage === 1}
+            >
+              <ChevronsLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="w-8 h-8 border-zinc-700 hover:bg-zinc-800"
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+
+            <div className="text-sm text-zinc-400 px-3">
+              Strona {currentPage} z {totalPages}
+            </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              className="w-8 h-8 border-zinc-700 hover:bg-zinc-800"
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="w-8 h-8 border-zinc-700 hover:bg-zinc-800"
+              onClick={() => goToPage(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              <ChevronsRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal ze szczegółami scammera */}
+      <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
+        <DialogContent className="bg-zinc-900 border-zinc-800 text-white">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              Szczegóły oszustwa
+              <Badge className="ml-2 bg-red-600">{selectedScammer?.id}</Badge>
+            </DialogTitle>
+            <DialogDescription className="text-zinc-400">
+              Pełne informacje o zgłoszonym oszuście.
+            </DialogDescription>
+          </DialogHeader>
+
+          {selectedScammer && (
+            <div className="space-y-4 mt-4">
+              <div className="flex items-center gap-2">
+                <User2 className="h-5 w-5 text-zinc-400" />
+                <h3 className="text-lg font-semibold text-white">{selectedScammer.name}</h3>
+                {renderScamType(selectedScammer.scamType)}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-zinc-800/50 p-4 rounded-lg border border-zinc-700">
+                {selectedScammer.contactInfo.phone && (
+                  <div className="space-y-1">
+                    <div className="text-xs text-zinc-500">Numer telefonu</div>
+                    <div className="text-zinc-200 flex items-center gap-2">
+                      <Phone className="h-4 w-4 text-zinc-400" />
+                      {selectedScammer.contactInfo.phone}
+                    </div>
+                  </div>
+                )}
+                {selectedScammer.contactInfo.email && (
+                  <div className="space-y-1">
+                    <div className="text-xs text-zinc-500">Adres e-mail</div>
+                    <div className="text-zinc-200 flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-zinc-400" />
+                      {selectedScammer.contactInfo.email}
+                    </div>
+                  </div>
+                )}
+                {selectedScammer.contactInfo.bankAccount && (
+                  <div className="space-y-1">
+                    <div className="text-xs text-zinc-500">Numer konta</div>
+                    <div className="text-zinc-200 flex items-center gap-2">
+                      <CreditCard className="h-4 w-4 text-zinc-400" />
+                      <span className="font-mono text-xs">{selectedScammer.contactInfo.bankAccount}</span>
+                    </div>
+                  </div>
+                )}
+                {selectedScammer.contactInfo.socialMedia && (
+                  <div className="space-y-1">
+                    <div className="text-xs text-zinc-500">Media społecznościowe</div>
+                    <div className="text-zinc-200 flex items-center gap-2">
+                      <Facebook className="h-4 w-4 text-zinc-400" />
+                      {selectedScammer.contactInfo.socialMedia}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-zinc-400">Opis oszustwa</div>
+                <div className="p-3 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-300">
+                  {selectedScammer.description}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between text-sm text-zinc-400 pt-2 mt-2 border-t border-zinc-800">
+                <div className="flex items-center gap-1">
+                  <Calendar className="h-4 w-4" />
+                  Zgłoszony: {selectedScammer.reportDate}
+                </div>
+                <Badge className="bg-red-900/50 text-red-400 flex items-center gap-1">
+                  <AlertTriangle className="h-3 w-3" />
+                  Zgłoszenia: {selectedScammer.reportCount}
+                </Badge>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
-}
-
-// Helper function to format dates
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  return new Intl.DateTimeFormat('pl-PL', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  }).format(date);
-}
-
-// Helper function to get the right label for the number of reports
-function getReportLabel(count: number) {
-  if (count === 1) return "zgłoszenie";
-  if (count >= 2 && count <= 4) return "zgłoszenia";
-  return "zgłoszeń";
 }

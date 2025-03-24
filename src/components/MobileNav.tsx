@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
-import { Menu, X, Shield, AlertCircle, ArrowRight } from "lucide-react";
+import { Menu, X, Shield, AlertCircle, ArrowRight, Settings } from "lucide-react";
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ export function MobileNav() {
     { name: "Strona główna", href: "/" },
     { name: "Zgłoś scammera", href: "/zglos" },
     { name: "Lista scamerów", href: "/lista-scamerow" },
-    { name: "Jak to działa", href: "/jak-to-dziala" },
+    { name: "Użyj naszego API", href: "/api-docs" },
     { name: "Kontakt", href: "/kontakt" },
   ];
 
@@ -73,11 +74,17 @@ export function MobileNav() {
         }`}
         aria-label="Mobile navigation"
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full overflow-hidden">
           <div className="flex justify-between items-center p-4 border-b border-zinc-800">
             <div className="flex items-center gap-2">
-              <div className="relative h-7 w-7 bg-red-600 rounded-full overflow-hidden flex items-center justify-center">
-                <AlertCircle className="h-4 w-4 text-white" />
+              <div className="relative h-8 w-8 overflow-hidden flex items-center justify-center">
+                <Image
+                  src="/images/scamerzy-logo.png"
+                  alt="Scamerzy Logo"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
               </div>
               <span className="font-bold text-lg text-white">Scamerzy</span>
             </div>
@@ -107,7 +114,9 @@ export function MobileNav() {
                     )}
                   >
                     {pathname === item.href && (
-                      <span className="w-1 h-5 bg-red-600 rounded-full mr-3"></span>
+                      <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                        <div className="w-4 h-4 bg-red-600 rounded-full animate-pulse"></div>
+                      </div>
                     )}
                     {item.name}
                   </Link>
@@ -120,16 +129,29 @@ export function MobileNav() {
             <p className="text-zinc-400 text-sm mb-4">
               Zauważyłeś oszustwo? Pomóż innym i zgłoś scammera, aby uchronić innych.
             </p>
-            <Button
-              asChild
-              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 group"
-            >
-              <Link href="/zglos" className="flex items-center justify-center gap-2" onClick={closeMenu}>
-                <Shield className="h-4 w-4" />
-                <span>Zgłoś Scammera</span>
-                <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-              </Link>
-            </Button>
+            <div className="space-y-2">
+              <Button
+                asChild
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 group"
+              >
+                <Link href="/zglos" className="flex items-center justify-center gap-2" onClick={closeMenu}>
+                  <Shield className="h-4 w-4" />
+                  <span>Zgłoś Scammera</span>
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="w-full border-zinc-700 text-white hover:bg-zinc-800"
+              >
+                <Link href="/admin" className="flex items-center justify-center gap-2" onClick={closeMenu}>
+                  <Settings className="h-4 w-4" />
+                  <span>Panel Administratora</span>
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

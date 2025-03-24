@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Navigation } from "./Navigation";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
@@ -17,8 +18,14 @@ export function Header() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="relative h-8 w-8 bg-red-600 rounded-full overflow-hidden flex items-center justify-center">
-            <AlertCircle className="h-5 w-5 text-white" />
+          <div className="relative h-8 w-8 overflow-hidden flex items-center justify-center">
+            <Image
+              src="/images/scamerzy-logo.png"
+              alt="Scamerzy Logo"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
           </div>
           <Link href="/" className="text-xl font-bold text-white hover:text-red-500 transition-colors duration-300">
             Scamerzy

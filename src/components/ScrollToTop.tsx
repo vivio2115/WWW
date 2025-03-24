@@ -1,28 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronUp } from "lucide-react";
 import { Button } from "./ui/button";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scrolled down
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
 
-    window.addEventListener("scroll", toggleVisibility);
-
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  // Scroll to top smoothly
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -30,21 +22,34 @@ export function ScrollToTop() {
     });
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
   return (
-    <div
-      className={`fixed bottom-8 right-8 z-40 transition-all duration-300 transform ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-    >
-      <Button
-        variant="default"
-        size="icon"
-        onClick={scrollToTop}
-        className="h-10 w-10 rounded-full shadow-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition-all duration-300 hover:shadow-lg hover:scale-110"
-      >
-        <ArrowUp className="h-5 w-5" />
-        <span className="sr-only">Przewiń do góry</span>
-      </Button>
+    <div className="fixed bottom-8 right-8 z-40">
+      <div className="relative">
+        {isVisible && (
+          <>
+            {/* Pulsujące kółka */}
+            <div className="absolute inset-0 rounded-full bg-red-600/40 animate-pulse scale-[1.35] transform-gpu"></div>
+            <div className="absolute inset-0 rounded-full bg-red-600/20 animate-pulse scale-[1.7] transform-gpu animation-delay-2000"></div>
+
+            <Button
+              onClick={scrollToTop}
+              size="icon"
+              className="bg-red-600 hover:bg-red-700 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 text-white relative z-10"
+              aria-label="Przewiń do góry"
+            >
+              <ChevronUp className="h-5 w-5" />
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

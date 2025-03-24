@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, ExternalLink, AlertCircle } from "lucide-react";
+import Image from "next/image";
+import { Shield, ExternalLink, Settings } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,8 +13,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex gap-2 items-center mb-4">
-              <div className="relative h-6 w-6 bg-red-600 rounded-full overflow-hidden flex items-center justify-center">
-                <AlertCircle className="h-4 w-4 text-white" />
+              <div className="relative h-6 w-6 overflow-hidden flex items-center justify-center">
+                <Image
+                  src="/images/scamerzy-logo.png"
+                  alt="Scamerzy Logo"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
               </div>
               <span className="text-lg font-bold text-white">Scamerzy</span>
             </div>
@@ -27,11 +34,11 @@ export function Footer() {
             <h3 className="font-medium mb-4 text-white border-l-2 border-red-600 pl-3">Przydatne linki</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/jak-to-dziala" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
+                <Link href="/api-docs" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
                   <span className="inline-block w-0 group-hover:w-2 transition-all duration-300 overflow-hidden">
                     <Shield className="h-3 w-3 text-red-500" />
                   </span>
-                  <span>Jak to działa</span>
+                  <span>Użyj naszego API</span>
                 </Link>
               </li>
               <li>
@@ -48,6 +55,14 @@ export function Footer() {
                     <Shield className="h-3 w-3 text-red-500" />
                   </span>
                   <span>Polityka prywatności</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-2 transition-all duration-300 overflow-hidden">
+                    <Settings className="h-3 w-3 text-red-500" />
+                  </span>
+                  <span>Panel Administracyjny</span>
                 </Link>
               </li>
             </ul>
