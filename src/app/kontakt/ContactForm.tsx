@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { Send, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Imię musi zawierać przynajmniej 2 znaki").max(50),
@@ -65,21 +66,21 @@ export default function ContactForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Imię i nazwisko</FormLabel>
+                <FormLabel className="text-zinc-200">Imię i nazwisko</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Jan Kowalski"
                     {...field}
-                    className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
+                    className="bg-zinc-950 border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:border-red-500"
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
@@ -89,15 +90,15 @@ export default function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Adres e-mail</FormLabel>
+                <FormLabel className="text-zinc-200">Adres e-mail</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="jan.kowalski@example.com"
                     {...field}
-                    className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
+                    className="bg-zinc-950 border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:border-red-500"
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
@@ -108,15 +109,15 @@ export default function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-white">Temat</FormLabel>
+              <FormLabel className="text-zinc-200">Temat</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Temat wiadomości"
                   {...field}
-                  className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
+                  className="bg-zinc-950 border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:border-red-500"
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />
@@ -126,25 +127,39 @@ export default function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-white">Wiadomość</FormLabel>
+              <FormLabel className="text-zinc-200">Wiadomość</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Treść wiadomości..."
-                  className="min-h-32 bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
+                  className="min-h-[120px] bg-zinc-950 border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:border-red-500"
                   {...field}
                 />
               </FormControl>
               <FormDescription className="text-zinc-500">
                 Opisz dokładnie, w czym możemy Ci pomóc
               </FormDescription>
-              <FormMessage />
+              <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />
 
-        <div className="flex justify-end">
-          <Button type="submit" disabled={isSubmitting} className="bg-red-600 hover:bg-red-700">
-            {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
+        <div>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white transition-colors"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Wysyłanie...
+              </>
+            ) : (
+              <>
+                <Send className="mr-2 h-4 w-4" />
+                Wyślij wiadomość
+              </>
+            )}
           </Button>
         </div>
       </form>

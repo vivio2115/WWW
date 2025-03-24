@@ -113,7 +113,7 @@ export function Footer() {
               <ul className="space-y-1.5">
                 <li>
                   <Link 
-                    href="/jak-to-dziala" 
+                    href="/blocked" 
                     className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
                   >
                   <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
@@ -146,7 +146,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link 
-                    href="/blog" 
+                    href="/blocked" 
                     className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
                   >
                   <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">

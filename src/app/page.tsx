@@ -48,10 +48,10 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 overflow-hidden relative">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950  relative">
         <div className="container px-4 md:px-6 relative z-10">
           {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
+          <div className="absolute inset-0  opacity-10 pointer-events-none">
             <div className="absolute top-0 left-10 w-72 h-72 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
             <div className="absolute top-0 right-10 w-72 h-72 bg-red-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
             <div className="absolute -bottom-8 left-20 w-72 h-72 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
@@ -70,7 +70,7 @@ export default function HomePage() {
                 animate={{ scale: isLoaded ? 1 : 0 }}
                 transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
               >
-                <div className="relative h-16 w-16 bg-red-600 rounded-full overflow-hidden flex items-center justify-center shadow-glow-red">
+                <div className="relative h-16 w-16 bg-red-600 rounded-full flex items-center justify-center shadow-glow-red">
                   <AlertCircle className="h-8 w-8 text-white" />
                 </div>
               </motion.div>
