@@ -1,23 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code, Send, Webhook, Shield, Bot, CheckCircle, Copy, ClipboardCheck } from "lucide-react";
-import { useState } from "react";
-import { ApiDocsContent as ImportedApiDocsContent } from './ApiDocsContent';
 
-// export const metadata = {
-//   title: "API Documentation | Scamerzy",
-//   description: "Integruj API Scamerzy z Twoim botem Discord, aby automatycznie weryfikować i zapisywać legitchecki.",
-// };
-
-export default function ApiDocsPage() {
-  return <LocalApiDocsContent />;
-}
-
-export function LocalApiDocsContent() {
+export function ApiDocsContent() {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   const containerVariants = {

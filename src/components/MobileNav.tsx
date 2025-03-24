@@ -1,160 +1,90 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X, Check, Shield, Search, Users, BarChart, Phone, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
-import { Menu, X, Shield, AlertCircle, ArrowRight, Settings } from "lucide-react";
 
 export function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const toggleOpen = () => setOpen(!open);
+  const closeNav = () => setOpen(false);
+
   const navItems = [
-    { name: "Strona główna", href: "/" },
-    { name: "Zgłoś scammera", href: "/zglos" },
-    { name: "Lista scamerów", href: "/lista-scamerow" },
-    { name: "Użyj naszego API", href: "/api-docs" },
-    { name: "Kontakt", href: "/kontakt" },
+    { name: "Strona główna", href: "/", icon: <Check className="h-5 w-5" /> },
+    { name: "Zgłoś oszusta", href: "/zglos", icon: <Shield className="h-5 w-5" /> },
+    { name: "Lista oszustów", href: "/lista-scamerow", icon: <Search className="h-5 w-5" /> },
+    { name: "Status", href: "/status", icon: <BarChart className="h-5 w-5" /> },
+    { name: "API", href: "/api-docs", icon: <Code className="h-5 w-5" /> },
+    { name: "Kontakt", href: "/kontakt", icon: <Phone className="h-5 w-5" /> },
   ];
 
-  // Close mobile menu when route changes
-  useEffect(() => {
-    closeMenu();
-  }, [pathname]);
-
-  // Lock scrolling when menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={toggleMenu}
-        className="md:hidden text-white hover:bg-zinc-800"
-        aria-label="Menu"
+    <div className="md:hidden">
+      <button
+        onClick={toggleOpen}
+        className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-700 bg-zinc-800 text-white"
+        aria-label="Toggle Menu"
       >
-        <Menu className="h-6 w-6" />
-      </Button>
+        {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+      </button>
 
-      {/* Overlay */}
-      <div
-        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={closeMenu}
-        aria-hidden="true"
-      />
-
-      {/* Mobile menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-[300px] bg-zinc-950 border-l border-zinc-800 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        aria-label="Mobile navigation"
-      >
-        <div className="flex flex-col h-full overflow-hidden">
-          <div className="flex justify-between items-center p-4 border-b border-zinc-800">
-            <div className="flex items-center gap-2">
-              <div className="relative h-8 w-8 overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/images/scamerzy-logo.png"
-                  alt="Scamerzy Logo"
-                  width={32}
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-bold text-lg text-white">Scamerzy</span>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={closeMenu}
-              className="text-white hover:bg-zinc-800"
-              aria-label="Zamknij menu"
-            >
-              <X className="h-5 w-5" />
-            </Button>
-          </div>
-
-          <nav className="flex-1 overflow-auto py-6 px-2">
-            <ul className="space-y-1">
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-16 z-50 bg-zinc-950 p-6"
+          >
+            <div className="flex flex-col space-y-3 mt-4">
               {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={closeMenu}
-                    className={cn(
-                      "flex items-center py-3 px-4 rounded-lg w-full text-sm font-medium transition-all duration-200",
-                      pathname === item.href
-                        ? "bg-zinc-800 text-white"
-                        : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                    )}
-                  >
-                    {pathname === item.href && (
-                      <div className="w-6 h-6 mr-3 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-red-600 rounded-full animate-pulse"></div>
-                      </div>
-                    )}
-                    {item.name}
-                  </Link>
-                </li>
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeNav}
+                  className={cn(
+                    "flex items-center space-x-3 rounded-md px-4 py-3 transition-all",
+                    pathname === item.href
+                      ? "bg-zinc-800 text-white"
+                      : "text-zinc-400 hover:bg-zinc-900 hover:text-white"
+                  )}
+                >
+                  <span className={pathname === item.href ? "text-red-500" : "text-zinc-400"}>
+                    {item.icon}
+                  </span>
+                  <span>{item.name}</span>
+                  {pathname === item.href && (
+                    <span className="ml-auto">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="h-2 w-2 rounded-full bg-red-500"
+                      />
+                    </span>
+                  )}
+                </Link>
               ))}
-            </ul>
-          </nav>
-
-          <div className="p-4 border-t border-zinc-800">
-            <p className="text-zinc-400 text-sm mb-4">
-              Zauważyłeś oszustwo? Pomóż innym i zgłoś scammera, aby uchronić innych.
-            </p>
-            <div className="space-y-2">
-              <Button
-                asChild
-                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 group"
-              >
-                <Link href="/zglos" className="flex items-center justify-center gap-2" onClick={closeMenu}>
-                  <Shield className="h-4 w-4" />
-                  <span>Zgłoś Scammera</span>
-                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                className="w-full border-zinc-700 text-white hover:bg-zinc-800"
-              >
-                <Link href="/admin" className="flex items-center justify-center gap-2" onClick={closeMenu}>
-                  <Settings className="h-4 w-4" />
-                  <span>Panel Administratora</span>
-                </Link>
-              </Button>
             </div>
-          </div>
-        </div>
-      </div>
-    </>
+
+            <div className="mt-8 border-t border-zinc-800 pt-8">
+              <Link
+                href="/zglos"
+                onClick={closeNav}
+                className="flex w-full items-center justify-center rounded-md bg-gradient-to-r from-red-600 to-red-700 px-4 py-3 font-medium text-white shadow-md transition-all hover:from-red-700 hover:to-red-800"
+              >
+                <Shield className="mr-2 h-5 w-5" />
+                Zgłoś Scammera
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

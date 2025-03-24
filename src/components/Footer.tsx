@@ -1,103 +1,255 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { Shield, ExternalLink, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ShieldIcon, AlertTriangle, ArrowUpRight, BookOpen, Shield, Scale, Pen, Mail, Users, MonitorCog, ShieldAlert, List, Server } from "lucide-react";
+import { CookieManager } from "@/components/CookieConsent";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="border-t border-zinc-800 py-12 mt-auto bg-zinc-950">
-      <div className="container px-4 sm:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <div className="flex gap-2 items-center mb-4">
-              <div className="relative h-6 w-6 overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/images/scamerzy-logo.png"
-                  alt="Scamerzy Logo"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
+    <footer className="border-t border-zinc-800 bg-black">
+      <div className="container py-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+          {/* Logo i opis */}
+          <div className="space-y-4 lg:col-span-1">
+            <div className="flex items-center space-x-2">
+              <div className="relative h-8 w-8 overflow-hidden">
+              <div className="relative h-8 w-8 overflow-hidden flex items-center justify-center bg-red-600 rounded-full">
+                <Shield className="h-5 w-5 text-white" />
               </div>
-              <span className="text-lg font-bold text-white">Scamerzy</span>
+              </div>
+              <span className="text-xl font-bold text-white">Scamerzy</span>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Platforma do zgłaszania i weryfikacji oszustów internetowych.
-              Pomagamy chronić innych przed oszustwami i tworzymy bezpieczniejszą przestrzeń online.
+            <p className="text-sm text-zinc-400">
+              Naszą misją jest ochrona użytkowników internetu przed oszustami poprzez 
+              gromadzenie i weryfikację danych o potencjalnych zagrożeniach.
             </p>
+            <div className="mt-4 flex space-x-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="hover-lift text-xs border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-900"
+                asChild
+              >
+                <Link href="/kontakt" className="flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-4 transition-all duration-300 overflow-hidden">
+                    <Shield className="h-3 w-3" />
+                  </span>
+                  <span>Zgłoś Problem</span>
+                </Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="hover-lift text-xs border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-900"
+                asChild
+              >
+                <Link href="/api-docs" className="flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-4 transition-all duration-300 overflow-hidden">
+                    <ArrowUpRight className="h-3 w-3" />
+                  </span>
+                  <span>API</span>
+                </Link>
+              </Button>
+            </div>
           </div>
 
-          <div>
-            <h3 className="font-medium mb-4 text-white border-l-2 border-red-600 pl-3">Przydatne linki</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/api-docs" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
-                  <span className="inline-block w-0 group-hover:w-2 transition-all duration-300 overflow-hidden">
-                    <Shield className="h-3 w-3 text-red-500" />
-                  </span>
-                  <span>Użyj naszego API</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
-                  <span className="inline-block w-0 group-hover:w-2 transition-all duration-300 overflow-hidden">
-                    <Shield className="h-3 w-3 text-red-500" />
-                  </span>
-                  <span>Kontakt</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/polityka-prywatnosci" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
-                  <span className="inline-block w-0 group-hover:w-2 transition-all duration-300 overflow-hidden">
-                    <Shield className="h-3 w-3 text-red-500" />
-                  </span>
-                  <span>Polityka prywatności</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin" className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-1 group">
-                  <span className="inline-block w-0 group-hover:w-2 transition-all duration-300 overflow-hidden">
-                    <Settings className="h-3 w-3 text-red-500" />
-                  </span>
-                  <span>Panel Administracyjny</span>
-                </Link>
-              </li>
-            </ul>
+          {/* Nawigacja, Informacje, Dokumenty */}
+          <div className="lg:col-span-2 grid grid-cols-2 gap-8 sm:grid-cols-3">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-400 border-l-2 border-red-600 pl-3">
+                Nawigacja
+              </p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link 
+                    href="/" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <Shield className="h-3 w-3" />
+                    </span>
+                    Strona główna
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/zglos" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <ShieldAlert className="h-3 w-3" />
+                    </span>
+                    Zgłoś scammera
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/lista-scamerow" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <List className="h-3 w-3" />
+                    </span>
+                    Lista scamerów
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/status" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <Server className="h-3 w-3" />
+                    </span>
+                    Status serwerów
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-400 border-l-2 border-red-600 pl-3">
+                Informacje
+              </p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link 
+                    href="/jak-to-dziala" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <MonitorCog className="h-3 w-3" />
+                    </span>
+                    Jak to działa
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/zespol" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <Users className="h-3 w-3" />
+                    </span>
+                    Nasz zespół
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/kontakt" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <Mail className="h-3 w-3" />
+                    </span>
+                    Kontakt
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/blog" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <Pen className="h-3 w-3" />
+                    </span>
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-400 border-l-2 border-red-600 pl-3">
+                Dokumenty
+              </p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link 
+                    href="/polityka-prywatnosci" 
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                    <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <BookOpen className="h-3 w-3" />
+                    </span>
+                    <span>Polityka prywatności</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/warunki-korzystania"
+                    className="text-sm text-zinc-400 transition-colors flex items-center gap-1 group hover:text-red-500"
+                  >
+                    <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                      <Scale className="h-3 w-3" />
+                    </span>
+                    <span>Warunki korzystania</span>
+                  </Link>
+                </li>
+              </ul>
+              <div className="pt-3">
+                <div className="relative overflow-hidden rounded-lg border border-red-800 bg-red-950/30 p-2">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 to-red-700/10"></div>
+                  <div className="relative flex items-start space-x-2">
+                    <AlertTriangle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                    <p className="text-xs text-zinc-400">
+                      <span className="font-semibold text-red-400">Uwaga: </span>
+                      Oszuści mogą podszywać się pod naszą stronę. Sprawdź zawsze adres URL.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <h3 className="font-medium mb-4 text-white border-l-2 border-red-600 pl-3">Zgłoś oszustwo</h3>
-            <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-              Padłeś ofiarą oszustwa? Pomóż innym uniknąć tego samego losu.
-              Twoje zgłoszenie może ochronić wiele osób.
+          {/* Newsletter */}
+          <div className="space-y-4 lg:col-span-1">
+            <p className="text-sm font-semibold uppercase tracking-wider text-zinc-400 border-l-2 border-red-600 pl-3">
+              Bądź na bieżąco
             </p>
-            <Link
-              href="/zglos"
-              className="text-sm font-medium text-red-500 inline-flex items-center hover:text-red-400 transition-colors group"
-            >
-              Zgłoś scammera
-              <span className="ml-1 transform group-hover:translate-x-1 transition-transform duration-300">
-                <ExternalLink className="h-3 w-3" />
-              </span>
-            </Link>
+            <p className="text-sm text-zinc-400">
+              Zapisz się, aby otrzymywać najnowsze informacje o zagrożeniach 
+              internetowych i aktualizacjach naszego serwisu.
+            </p>
+            <form className="mt-2 flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
+              <input
+                type="email"
+                placeholder="Twój adres e-mail"
+                className="rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                required
+              />
+              <Button 
+                type="submit" 
+                className="bg-red-700 hover:bg-red-800 text-white transition-colors"
+                size="sm"
+              >
+                Zapisz się
+              </Button>
+            </form>
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 mt-10 pt-8 text-center text-xs text-zinc-500">
-          <p className="mb-2">© {currentYear} Scamerzy. Wszystkie prawa zastrzeżone.</p>
-          <p>
-            Korzystając z tej strony, zgadzasz się z naszą
-            <Link href="/polityka-prywatnosci" className="text-zinc-400 hover:text-red-500 transition-colors mx-1">
-              Polityką Prywatności
-            </Link>
-            i
-            <Link href="/warunki-korzystania" className="text-zinc-400 hover:text-red-500 transition-colors ml-1">
-              Warunkami Korzystania
-            </Link>.
-          </p>
+        {/* Dolna część stopki */}
+        <div className="mt-8 border-t border-zinc-800 pt-6">
+          <div className="flex flex-col items-center justify-between sm:flex-row">
+            <p className="text-xs text-zinc-500">
+              &copy; {new Date().getFullYear()} Scamerzy. Wszystkie prawa zastrzeżone.
+            </p>
+            <div className="mt-3 flex items-center space-x-4 sm:mt-0">
+              <Link 
+                href="/polityka-prywatnosci" 
+                className="text-xs text-zinc-500 hover:text-zinc-400 transition-colors"
+              >
+                Polityka Prywatności
+              </Link>
+              <Link 
+                href="/warunki-korzystania" 
+                className="text-xs text-zinc-500 hover:text-zinc-400 transition-colors"
+              >
+                Warunki Korzystania
+              </Link>
+              <CookieManager />
+              <span className="text-xs text-zinc-500">v1.2.5</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

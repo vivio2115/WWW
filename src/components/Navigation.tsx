@@ -10,9 +10,10 @@ export function Navigation() {
 
   const navItems = [
     { name: "Strona główna", href: "/" },
-    { name: "Zgłoś scammera", href: "/zglos" },
-    { name: "Lista scamerów", href: "/lista-scamerow" },
-    { name: "Jak to działa", href: "/jak-to-dziala" },
+    { name: "Zgłoś oszusta", href: "/zglos" },
+    { name: "Lista oszustów", href: "/lista-scamerow" },
+    { name: "Status", href: "/status" },
+    { name: "API", href: "/api-docs" },
     { name: "Kontakt", href: "/kontakt" },
   ];
 

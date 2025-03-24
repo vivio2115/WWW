@@ -1,0 +1,137 @@
+"use client";
+
+import Link from "next/link";
+import { Shield, ExternalLink, Settings, ArrowRight, Server, ChevronsLeftRightEllipsis,Mail } from "lucide-react";
+import { motion } from "framer-motion";
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const footerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        delay: 0.2,
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  return (
+    <motion.footer 
+      className="border-t border-zinc-800 py-12 mt-auto bg-zinc-950"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={footerVariants}
+    >
+      <div className="container px-4 sm:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div variants={itemVariants}>
+            <div className="flex gap-2 items-center mb-4">
+              <div className="relative h-8 w-8 overflow-hidden flex items-center justify-center bg-red-600 rounded-full">
+                <Shield className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-lg font-bold text-white">Scamerzy</span>
+            </div>
+            <p className="text-zinc-400 text-sm leading-relaxed">
+              Nasza platforma pomaga identyfikować i unikać oszustów internetowych.
+              Zgłaszaj oszustów, sprawdzaj podejrzane dane i pomóż budować
+              bezpieczniejszą przestrzeń internetową dla wszystkich.
+            </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <h3 className="font-medium mb-4 text-white border-l-2 border-red-600 pl-3">Przydatne linki</h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link href="/api-docs" className="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                    <ChevronsLeftRightEllipsis className="h-3 w-3 text-red-500" />
+                  </span>
+                  <span>Użyj naszego API</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/status" className="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                    <Server className="h-3 w-3 text-red-500" />
+                  </span>
+                  <span>Status serwerów</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/kontakt" className="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                    <Mail className="h-3 w-3 text-red-500" />
+                  </span>
+                  <span>Kontakt</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/polityka-prywatnosci" className="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                    <Shield className="h-3 w-3 text-red-500" />
+                  </span>
+                  <span>Polityka prywatności</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/polityka-prywatnosci" className="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-1 group">
+                  <span className="inline-block w-0 group-hover:w-3 transition-all duration-300 overflow-hidden">
+                    <Shield className="h-3 w-3 text-red-500" />
+                  </span>
+                  <span>Polityka prywatności</span>
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <h3 className="font-medium mb-4 text-white border-l-2 border-red-600 pl-3">Zgłoś oszustwo</h3>
+            <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
+              Padłeś ofiarą oszustwa? Pomóż innym uniknąć tego samego losu.
+              Twoje zgłoszenie może ochronić wiele osób.
+            </p>
+            <Link
+              href="/zglos"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white text-sm font-medium transition-colors"
+            >
+              Zgłoś oszusta
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          className="border-t border-zinc-800 mt-10 pt-8 text-center text-xs text-zinc-500"
+          variants={itemVariants}
+        >
+          <p className="mb-2">© {currentYear} Scamerzy. Wszystkie prawa zastrzeżone.</p>
+          <p>
+            Korzystając z tej strony, zgadzasz się z naszą
+            <Link href="/polityka-prywatnosci" className="text-zinc-400 hover:text-red-500 transition-colors mx-1">
+              Polityką Prywatności
+            </Link>
+            i
+            <Link href="/warunki-korzystania" className="text-zinc-400 hover:text-red-500 transition-colors ml-1">
+              Warunkami Korzystania
+            </Link>.
+          </p>
+        </motion.div>
+      </div>
+    </motion.footer>
+  );
+}
