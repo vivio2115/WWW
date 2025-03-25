@@ -1,0 +1,678 @@
+2025/03/25 17:55:58 No .env file found, make sure environment variables are set
+2025/03/25 17:55:58 API server starts on port 8080
+2025/03/25 18:01:07 Shutdown signal received, closing server gracefully...
+2025/03/25 18:01:11 No .env file found, make sure environment variables are set
+2025/03/25 18:01:11 API server starts on port 8080
+2025/03/25 18:03:09 Shutdown signal received, closing server gracefully...
+2025/03/25 18:04:03 No .env file found, make sure environment variables are set
+2025/03/25 18:04:03 API server starts on port 8080
+2025/03/25 18:04:55 Shutdown signal received, closing server gracefully...
+2025/03/25 18:04:58 API server starts on port 8080
+2025/03/25 18:05:04 [Request:a82a45b4-3bad-49e4-af51-43e5d8a894c1] Received GET request from [::1]:52017 for /api/v1/services
+2025/03/25 18:05:04 [Request:a82a45b4-3bad-49e4-af51-43e5d8a894c1] Completed in 2.1608ms
+2025/03/25 18:08:34 [Request:604d90ef-3671-4b5a-a5a9-4a425db8ff06] Received GET request from 127.0.0.1:52119 for /api/v1/services
+2025/03/25 18:08:34 [Request:604d90ef-3671-4b5a-a5a9-4a425db8ff06] Completed in 3.292ms
+2025/03/25 18:08:48 [Request:a2934a40-2211-4d43-b1a8-739b2bf4ea6a] Received GET request from 127.0.0.1:52119 for /api/v1/services
+2025/03/25 18:08:48 [Request:a2934a40-2211-4d43-b1a8-739b2bf4ea6a] Completed in 0s
+2025/03/25 18:08:53 [Request:cb1ce69c-e506-4528-be90-f1aea70c1644] Received GET request from 127.0.0.1:52119 for /api/v1/services
+2025/03/25 18:08:53 [Request:cb1ce69c-e506-4528-be90-f1aea70c1644] Completed in 0s
+2025/03/25 18:08:56 Shutdown signal received, closing server gracefully...
+2025/03/25 18:09:50 API server starts on port 8080
+2025/03/25 18:10:39 [Request:ab019349-92e4-4139-b2ba-7c4f7e007cea] Received GET request from 127.0.0.1:52217 for /api/v1/services
+2025/03/25 18:10:39 [Request:ab019349-92e4-4139-b2ba-7c4f7e007cea] Completed in 531.4µs
+2025/03/25 18:10:44 [Request:7ae35f2b-61f2-4d41-997e-e128da8d5f32] Received GET request from 127.0.0.1:52217 for /api/v1/services
+2025/03/25 18:10:44 [Request:7ae35f2b-61f2-4d41-997e-e128da8d5f32] Completed in 0s
+2025/03/25 18:10:47 [Request:3861e006-4158-4dbe-93e9-534979cdbeb2] Received GET request from 127.0.0.1:52217 for /api/v1/services
+2025/03/25 18:10:47 [Request:3861e006-4158-4dbe-93e9-534979cdbeb2] Completed in 506.8µs
+2025/03/25 18:16:14 [Request:48517bca-0a09-4218-8492-030c07fbe8bf] Received GET request from 127.0.0.1:52354 for /api/v1/services
+2025/03/25 18:16:14 [Request:48517bca-0a09-4218-8492-030c07fbe8bf] Completed in 1.0751ms
+2025/03/25 18:16:20 [Request:607c4672-4b26-4c4d-9131-aef2f7d92626] Received GET request from 127.0.0.1:52354 for /api/v1/services
+2025/03/25 18:16:20 [Request:607c4672-4b26-4c4d-9131-aef2f7d92626] Completed in 514.3µs
+2025/03/25 18:16:39 [Request:84d6c9d4-cbd0-46aa-bc2d-1132c399199c] Received GET request from 127.0.0.1:52354 for /api/v1/services
+2025/03/25 18:16:39 [Request:84d6c9d4-cbd0-46aa-bc2d-1132c399199c] Completed in 507.5µs
+2025/03/25 18:17:40 [Request:467dacf0-a88a-4d77-ba12-e03ccc7ede19] Received GET request from 127.0.0.1:52354 for /api/v1/services
+2025/03/25 18:17:40 [Request:467dacf0-a88a-4d77-ba12-e03ccc7ede19] Completed in 533.3µs
+2025/03/25 18:18:40 [Request:ccb811db-63f9-4d09-aefd-1e884a00bb33] Received GET request from 127.0.0.1:52354 for /api/v1/services
+2025/03/25 18:18:40 [Request:ccb811db-63f9-4d09-aefd-1e884a00bb33] Completed in 0s
+2025/03/25 18:19:41 [Request:081f6c84-1234-4bcd-94ae-f9cefeb053db] Received GET request from 127.0.0.1:52354 for /api/v1/services
+2025/03/25 18:19:41 [Request:081f6c84-1234-4bcd-94ae-f9cefeb053db] Completed in 0s
+2025/03/25 18:20:03 Shutdown signal received, closing server gracefully...
+2025/03/25 18:20:06 API server starts on port 8080
+2025/03/25 18:20:14 [Request:6af39c7b-48ae-4a67-b680-117ad7ef63ea] Received GET request from 127.0.0.1:52437 for /api/v1/services
+2025/03/25 18:20:14 Unauthorized request from 127.0.0.1:52437: missing or invalid API key
+2025/03/25 18:20:14 [Request:6af39c7b-48ae-4a67-b680-117ad7ef63ea] Completed in 520.7µs
+2025/03/25 18:21:14 [Request:7eef2c37-850c-4d11-9016-179507a3b35e] Received GET request from 127.0.0.1:52437 for /api/v1/services
+2025/03/25 18:21:14 Unauthorized request from 127.0.0.1:52437: missing or invalid API key
+2025/03/25 18:21:14 [Request:7eef2c37-850c-4d11-9016-179507a3b35e] Completed in 527.3µs
+2025/03/25 18:22:15 [Request:de59741b-a987-4363-99c7-25f9a389f149] Received GET request from 127.0.0.1:52437 for /api/v1/services
+2025/03/25 18:22:15 Unauthorized request from 127.0.0.1:52437: missing or invalid API key
+2025/03/25 18:22:15 [Request:de59741b-a987-4363-99c7-25f9a389f149] Completed in 0s
+2025/03/25 18:23:15 [Request:a46f2895-cff4-435d-9ba8-4659a69cbfaa] Received GET request from 127.0.0.1:52437 for /api/v1/services
+2025/03/25 18:23:15 Unauthorized request from 127.0.0.1:52437: missing or invalid API key
+2025/03/25 18:23:15 [Request:a46f2895-cff4-435d-9ba8-4659a69cbfaa] Completed in 0s
+2025/03/25 18:24:16 [Request:de0a6235-abeb-44ae-87a2-bcefa67973ab] Received GET request from 127.0.0.1:52437 for /api/v1/services
+2025/03/25 18:24:16 Unauthorized request from 127.0.0.1:52437: missing or invalid API key
+2025/03/25 18:24:16 [Request:de0a6235-abeb-44ae-87a2-bcefa67973ab] Completed in 543µs
+2025/03/25 18:24:36 [Request:0171aaf2-caed-4150-95af-a9acc7f89488] Received OPTIONS request from 127.0.0.1:52475 for /api/v1/services
+2025/03/25 18:24:36 [Request:0171aaf2-caed-4150-95af-a9acc7f89488] Completed in 0s
+2025/03/25 18:24:36 [Request:c636cca2-aab8-4fc2-bd97-f768ce8bce7e] Received GET request from 127.0.0.1:52437 for /api/v1/services
+2025/03/25 18:24:36 Authorized request from 127.0.0.1:52437
+2025/03/25 18:24:36 [Request:c636cca2-aab8-4fc2-bd97-f768ce8bce7e] Completed in 523.7µs
+2025/03/25 18:25:01 Shutdown signal received, closing server gracefully...
+2025/03/25 18:25:04 API server starts on port 8080
+2025/03/25 18:25:14 [Request:4c5be363-f67f-45b0-a02f-a43a7cf2b0c6] Received OPTIONS request from 127.0.0.1:52518 for /api/v1/services
+2025/03/25 18:25:14 [Request:4c5be363-f67f-45b0-a02f-a43a7cf2b0c6] Completed in 519.6µs
+2025/03/25 18:25:14 [Request:dca61d75-f955-4cbb-bcdd-798036a8107c] Received OPTIONS request from 127.0.0.1:52519 for /api/v1/incidents
+2025/03/25 18:25:14 [Request:dca61d75-f955-4cbb-bcdd-798036a8107c] Completed in 0s
+2025/03/25 18:25:14 [Request:db55e981-f802-4516-82d6-1c0316f2c897] Received GET request from 127.0.0.1:52518 for /api/v1/services
+2025/03/25 18:25:14 Authorized request from 127.0.0.1:52518
+2025/03/25 18:25:14 [Request:ab1abcd8-ca06-4f32-93f6-5939ebf879d6] Received GET request from 127.0.0.1:52519 for /api/v1/incidents
+2025/03/25 18:25:14 [Request:db55e981-f802-4516-82d6-1c0316f2c897] Completed in 531.8µs
+2025/03/25 18:25:14 Authorized request from 127.0.0.1:52519
+2025/03/25 18:25:14 [Request:ab1abcd8-ca06-4f32-93f6-5939ebf879d6] Completed in 524.1µs
+2025/03/25 18:25:30 Shutdown signal received, closing server gracefully...
+2025/03/25 18:25:48 API server starts on port 8080
+2025/03/25 18:26:38 [Request:f1f59b35-5241-4d6e-8a68-3c2469e88d9e] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:26:38 [Request:ccaa252e-cc4c-4306-a9fb-78555bb2381d] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:26:38 [Request:f1f59b35-5241-4d6e-8a68-3c2469e88d9e] Completed in 0s
+2025/03/25 18:26:38 [Request:ccaa252e-cc4c-4306-a9fb-78555bb2381d] Completed in 527.2µs
+2025/03/25 18:26:38 [Request:21b39710-badb-46cb-b331-63fa511f1138] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:26:38 Authorized request from 127.0.0.1:52554
+2025/03/25 18:26:38 [Request:5ee21b43-a740-4565-96f7-31a413fa800d] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:26:38 [Request:21b39710-badb-46cb-b331-63fa511f1138] Completed in 527.5µs
+2025/03/25 18:26:38 Authorized request from 127.0.0.1:52555
+2025/03/25 18:26:38 [Request:5ee21b43-a740-4565-96f7-31a413fa800d] Completed in 523.2µs
+2025/03/25 18:27:38 [Request:576ce075-b89a-4da4-9e44-98aa033ec90d] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:27:38 [Request:460444fa-f9ee-482d-95e1-f059bbda2c8d] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:27:38 [Request:576ce075-b89a-4da4-9e44-98aa033ec90d] Completed in 0s
+2025/03/25 18:27:38 [Request:460444fa-f9ee-482d-95e1-f059bbda2c8d] Completed in 530.3µs
+2025/03/25 18:27:38 [Request:2800ef16-2fba-4aae-ab1a-83de6b60d09c] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:27:38 Authorized request from 127.0.0.1:52554
+2025/03/25 18:27:38 [Request:b9ec3992-4377-49c0-85e1-1e1902c26ba4] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:27:38 Authorized request from 127.0.0.1:52555
+2025/03/25 18:27:38 [Request:2800ef16-2fba-4aae-ab1a-83de6b60d09c] Completed in 544µs
+2025/03/25 18:27:38 [Request:b9ec3992-4377-49c0-85e1-1e1902c26ba4] Completed in 1.0892ms
+2025/03/25 18:28:39 [Request:55508c86-027c-4f33-a296-ed37c5cdfda9] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:28:39 [Request:55508c86-027c-4f33-a296-ed37c5cdfda9] Completed in 0s
+2025/03/25 18:28:39 [Request:2fe4d58e-da51-4ba1-851e-2c1b1df267b5] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:28:39 [Request:2fe4d58e-da51-4ba1-851e-2c1b1df267b5] Completed in 536.4µs
+2025/03/25 18:28:39 [Request:0788fe30-87b6-4b1f-8b8a-8ce8922f0ce9] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:28:39 Authorized request from 127.0.0.1:52554
+2025/03/25 18:28:39 [Request:0788fe30-87b6-4b1f-8b8a-8ce8922f0ce9] Completed in 0s
+2025/03/25 18:28:39 [Request:e0580d79-0c07-4e52-8106-590a667707ba] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:28:39 Authorized request from 127.0.0.1:52555
+2025/03/25 18:28:39 [Request:e0580d79-0c07-4e52-8106-590a667707ba] Completed in 2.1193ms
+2025/03/25 18:29:40 [Request:cfc5ce2a-5760-4a02-b558-35e3410a95cf] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:29:40 [Request:cfa4750b-6faa-4619-9bb3-68fa58ccab67] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:29:40 [Request:cfa4750b-6faa-4619-9bb3-68fa58ccab67] Completed in 524.8µs
+2025/03/25 18:29:40 [Request:cfc5ce2a-5760-4a02-b558-35e3410a95cf] Completed in 524.8µs
+2025/03/25 18:29:40 [Request:5ee55754-9f70-4286-8a09-126d3c93902a] Received GET request from 127.0.0.1:52554 for /api/v1/incidents
+2025/03/25 18:29:40 Authorized request from 127.0.0.1:52554
+2025/03/25 18:29:40 [Request:5ee55754-9f70-4286-8a09-126d3c93902a] Completed in 522.7µs
+2025/03/25 18:29:40 [Request:80d4debd-a82d-4585-a66d-91bd0a82a534] Received GET request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:29:40 Authorized request from 127.0.0.1:52555
+2025/03/25 18:29:40 [Request:80d4debd-a82d-4585-a66d-91bd0a82a534] Completed in 528.9µs
+2025/03/25 18:30:41 [Request:f8166525-e3fb-45fa-8792-81a550ad5b60] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:30:41 [Request:ba41c591-944b-4fde-87eb-1269139ff4b1] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:30:41 [Request:f8166525-e3fb-45fa-8792-81a550ad5b60] Completed in 530.5µs
+2025/03/25 18:30:41 [Request:ba41c591-944b-4fde-87eb-1269139ff4b1] Completed in 530.5µs
+2025/03/25 18:30:41 [Request:32990cfe-8afa-45a5-9c3d-e6691bd16854] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:30:41 Authorized request from 127.0.0.1:52554
+2025/03/25 18:30:41 [Request:32990cfe-8afa-45a5-9c3d-e6691bd16854] Completed in 534.5µs
+2025/03/25 18:30:41 [Request:d26f3eaf-1367-40c7-9bdd-c21c6f795ca3] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:30:41 Authorized request from 127.0.0.1:52555
+2025/03/25 18:30:41 [Request:d26f3eaf-1367-40c7-9bdd-c21c6f795ca3] Completed in 530.2µs
+2025/03/25 18:31:41 [Request:79e049e7-038f-4825-a7bb-a3f40a54b799] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:31:41 [Request:0af3a91d-e216-494b-bd10-b46dcd2ba6d7] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:31:41 [Request:79e049e7-038f-4825-a7bb-a3f40a54b799] Completed in 0s
+2025/03/25 18:31:41 [Request:0af3a91d-e216-494b-bd10-b46dcd2ba6d7] Completed in 0s
+2025/03/25 18:31:41 [Request:9ff49bdc-7edd-40c7-86ef-2deefd0550ea] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:31:41 Authorized request from 127.0.0.1:52554
+2025/03/25 18:31:41 [Request:9ff49bdc-7edd-40c7-86ef-2deefd0550ea] Completed in 676µs
+2025/03/25 18:31:41 [Request:ec8b7538-b61d-4195-a690-7a7872a87a61] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:31:41 Authorized request from 127.0.0.1:52555
+2025/03/25 18:31:41 [Request:ec8b7538-b61d-4195-a690-7a7872a87a61] Completed in 504.6µs
+2025/03/25 18:32:42 [Request:18fce98d-2829-4542-af13-6acc801f85dd] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:32:42 [Request:eb552252-db30-4ffe-8832-bb9874f37a50] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:32:42 [Request:eb552252-db30-4ffe-8832-bb9874f37a50] Completed in 0s
+2025/03/25 18:32:42 [Request:18fce98d-2829-4542-af13-6acc801f85dd] Completed in 0s
+2025/03/25 18:32:42 [Request:f4785f1a-d660-4749-a72a-bf96934eacda] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:32:42 Authorized request from 127.0.0.1:52555
+2025/03/25 18:32:42 [Request:f4785f1a-d660-4749-a72a-bf96934eacda] Completed in 514.2µs
+2025/03/25 18:32:42 [Request:a65b9d5d-50d2-44da-ac50-193c146f56aa] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:32:42 Authorized request from 127.0.0.1:52554
+2025/03/25 18:32:42 [Request:a65b9d5d-50d2-44da-ac50-193c146f56aa] Completed in 536.8µs
+2025/03/25 18:33:20 [Request:c94cfe39-0588-49f5-9968-3da03fa413bf] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:33:20 [Request:c94cfe39-0588-49f5-9968-3da03fa413bf] Completed in 195.3µs
+2025/03/25 18:33:20 [Request:8d20936b-2699-4893-b59f-eb7807763871] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/incidents
+2025/03/25 18:33:20 [Request:8d20936b-2699-4893-b59f-eb7807763871] Completed in 508.2µs
+2025/03/25 18:33:20 [Request:325fd10a-cdd4-41db-b3bf-f466e0469d1c] Received GET request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:33:20 Authorized request from 127.0.0.1:52555
+2025/03/25 18:33:20 [Request:f7ffd5ba-a8b3-4e86-97f5-37b44bb6016b] Received GET request from 127.0.0.1:52554 for /api/v1/incidents
+2025/03/25 18:33:20 Authorized request from 127.0.0.1:52554
+2025/03/25 18:33:20 [Request:325fd10a-cdd4-41db-b3bf-f466e0469d1c] Completed in 538µs
+2025/03/25 18:33:20 [Request:f7ffd5ba-a8b3-4e86-97f5-37b44bb6016b] Completed in 521.4µs
+2025/03/25 18:33:40 [Request:c86f1fc3-6e46-43b9-81a6-e4b2d1e44a7b] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:33:40 [Request:c86f1fc3-6e46-43b9-81a6-e4b2d1e44a7b] Completed in 1.6831ms
+2025/03/25 18:33:40 [Request:970b9364-ab75-467a-8021-4f4f5fe563ef] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/incidents
+2025/03/25 18:33:40 [Request:970b9364-ab75-467a-8021-4f4f5fe563ef] Completed in 1.2594ms
+2025/03/25 18:33:40 [Request:12643ddb-dc8d-4847-ae08-7eb5d6c25809] Received GET request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:33:40 Authorized request from 127.0.0.1:52555
+2025/03/25 18:33:40 [Request:12643ddb-dc8d-4847-ae08-7eb5d6c25809] Completed in 1.6602ms
+2025/03/25 18:34:18 [Request:8546e61e-0f7d-4fa5-8be0-5f119178a352] Received GET request from 127.0.0.1:52780 for /api/v1/incidents
+2025/03/25 18:34:18 Unauthorized request from 127.0.0.1:52780: missing or invalid API key
+2025/03/25 18:34:18 [Request:8546e61e-0f7d-4fa5-8be0-5f119178a352] Completed in 537.6µs
+2025/03/25 18:34:40 [Request:e9b58262-af56-4a39-a5f4-5da90b470b75] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:34:40 [Request:708f87b7-0acb-4f77-96ca-d381f3f9ea2b] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:34:40 [Request:708f87b7-0acb-4f77-96ca-d381f3f9ea2b] Completed in 526.5µs
+2025/03/25 18:34:40 [Request:e9b58262-af56-4a39-a5f4-5da90b470b75] Completed in 526.5µs
+2025/03/25 18:34:40 [Request:300b5ffc-f053-42b7-84db-c5415be29ccc] Received GET request from 127.0.0.1:52555 for /api/v1/incidents
+2025/03/25 18:34:40 Authorized request from 127.0.0.1:52555
+2025/03/25 18:34:40 [Request:300b5ffc-f053-42b7-84db-c5415be29ccc] Completed in 0s
+2025/03/25 18:34:40 [Request:efff2f02-c14f-4e3c-b377-b852d7659e54] Received GET request from 127.0.0.1:52554 for /api/v1/services
+2025/03/25 18:34:40 Authorized request from 127.0.0.1:52554
+2025/03/25 18:34:40 [Request:efff2f02-c14f-4e3c-b377-b852d7659e54] Completed in 0s
+2025/03/25 18:35:41 [Request:b99245f4-68c8-4505-87ad-3277766a5f3f] Received OPTIONS request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:35:41 [Request:a82d999a-dce4-4886-b348-7780daca2ce2] Received OPTIONS request from 127.0.0.1:52554 for /api/v1/incidents
+2025/03/25 18:35:41 [Request:a82d999a-dce4-4886-b348-7780daca2ce2] Completed in 0s
+2025/03/25 18:35:41 [Request:b99245f4-68c8-4505-87ad-3277766a5f3f] Completed in 543.1µs
+2025/03/25 18:35:41 [Request:c8c69a0e-4fe8-4cda-9d57-e2bd82de133b] Received GET request from 127.0.0.1:52554 for /api/v1/incidents
+2025/03/25 18:35:41 Authorized request from 127.0.0.1:52554
+2025/03/25 18:35:41 [Request:c8c69a0e-4fe8-4cda-9d57-e2bd82de133b] Completed in 528µs
+2025/03/25 18:35:41 [Request:557c0e36-87e8-4141-8cf8-c4974ff69ad3] Received GET request from 127.0.0.1:52555 for /api/v1/services
+2025/03/25 18:35:41 Authorized request from 127.0.0.1:52555
+2025/03/25 18:35:41 [Request:557c0e36-87e8-4141-8cf8-c4974ff69ad3] Completed in 0s
+2025/03/25 18:36:29 Shutdown signal received, closing server gracefully...
+2025/03/25 18:37:22 API server starts on port 8080
+2025/03/25 18:37:28 [Request:35b832a9-86d0-4850-b38e-bf5b7a8f0ce8] Received OPTIONS request from 127.0.0.1:52927 for /api/v1/services
+2025/03/25 18:37:28 [Request:f396fc40-7ff2-4e17-90d2-412b4d21da7b] Received OPTIONS request from 127.0.0.1:52928 for /api/v1/incidents
+2025/03/25 18:37:28 [Request:35b832a9-86d0-4850-b38e-bf5b7a8f0ce8] Completed in 523.9µs
+2025/03/25 18:37:28 [Request:f396fc40-7ff2-4e17-90d2-412b4d21da7b] Completed in 523.9µs
+2025/03/25 18:37:28 [Request:6dc4a6d6-06db-489f-87e0-2e51b0df45df] Received GET request from 127.0.0.1:52927 for /api/v1/services
+2025/03/25 18:37:28 Authorized request from 127.0.0.1:52927
+2025/03/25 18:37:28 [Request:6dc4a6d6-06db-489f-87e0-2e51b0df45df] Completed in 533.8µs
+2025/03/25 18:37:28 [Request:ca7c8869-df9b-4187-bc3b-7f66e6d96da4] Received GET request from 127.0.0.1:52927 for /api/v1/incidents
+2025/03/25 18:37:28 Authorized request from 127.0.0.1:52927
+2025/03/25 18:37:28 [Request:ca7c8869-df9b-4187-bc3b-7f66e6d96da4] Completed in 542.2µs
+2025/03/25 18:38:28 [Request:d23f561c-fbea-4bc2-a596-1280de06b099] Received OPTIONS request from 127.0.0.1:52927 for /api/v1/services
+2025/03/25 18:38:28 [Request:d23f561c-fbea-4bc2-a596-1280de06b099] Completed in 524.4µs
+2025/03/25 18:38:28 [Request:4d4c3c7a-d538-44c9-8999-679194c9012e] Received OPTIONS request from 127.0.0.1:52928 for /api/v1/incidents
+2025/03/25 18:38:28 [Request:4d4c3c7a-d538-44c9-8999-679194c9012e] Completed in 0s
+2025/03/25 18:38:28 [Request:a26c36fb-4585-49db-8d1f-5429894a3546] Received GET request from 127.0.0.1:52927 for /api/v1/services
+2025/03/25 18:38:28 Authorized request from 127.0.0.1:52927
+2025/03/25 18:38:28 [Request:a26c36fb-4585-49db-8d1f-5429894a3546] Completed in 0s
+2025/03/25 18:38:28 [Request:1611fe73-b0d3-4339-9080-7868eb471125] Received GET request from 127.0.0.1:52928 for /api/v1/incidents
+2025/03/25 18:38:28 Authorized request from 127.0.0.1:52928
+2025/03/25 18:38:28 [Request:1611fe73-b0d3-4339-9080-7868eb471125] Completed in 533.9µs
+2025/03/25 18:39:29 [Request:208f696d-5d2d-473f-aada-efbe0ebb6e42] Received OPTIONS request from 127.0.0.1:52927 for /api/v1/services
+2025/03/25 18:39:29 [Request:3d763733-1866-40b8-9986-0ca2e3a13af0] Received OPTIONS request from 127.0.0.1:52928 for /api/v1/incidents
+2025/03/25 18:39:29 [Request:208f696d-5d2d-473f-aada-efbe0ebb6e42] Completed in 524.4µs
+2025/03/25 18:39:29 [Request:3d763733-1866-40b8-9986-0ca2e3a13af0] Completed in 524.4µs
+2025/03/25 18:39:29 [Request:475adb39-a641-4bde-b99c-904688733611] Received GET request from 127.0.0.1:52927 for /api/v1/services
+2025/03/25 18:39:29 Authorized request from 127.0.0.1:52927
+2025/03/25 18:39:29 [Request:475adb39-a641-4bde-b99c-904688733611] Completed in 0s
+2025/03/25 18:39:29 [Request:02fa467d-996e-4c79-a343-eda9f40d7da4] Received GET request from 127.0.0.1:52928 for /api/v1/incidents
+2025/03/25 18:39:29 Authorized request from 127.0.0.1:52928
+2025/03/25 18:39:29 [Request:02fa467d-996e-4c79-a343-eda9f40d7da4] Completed in 508.4µs
+2025/03/25 18:44:15 [Request:933a39e2-7a44-48db-b7da-d46daa01ecd3] Received OPTIONS request from 127.0.0.1:53032 for /api/v1/services
+2025/03/25 18:44:15 [Request:933a39e2-7a44-48db-b7da-d46daa01ecd3] Completed in 527.9µs
+2025/03/25 18:44:16 [Request:fec1288f-622d-4fbb-ab5a-aeda228665d1] Received GET request from 127.0.0.1:53032 for /api/v1/services
+2025/03/25 18:44:16 Authorized request from 127.0.0.1:53032
+2025/03/25 18:44:16 [Request:fec1288f-622d-4fbb-ab5a-aeda228665d1] Completed in 543.8µs
+2025/03/25 18:44:16 [Request:0f93a31e-4c42-4243-bda3-60c572a232fa] Received GET request from 127.0.0.1:53032 for /api/v1/services
+2025/03/25 18:44:16 Authorized request from 127.0.0.1:53032
+2025/03/25 18:44:16 [Request:0f93a31e-4c42-4243-bda3-60c572a232fa] Completed in 532.3µs
+2025/03/25 18:44:16 [Request:195008d3-e899-44ef-a448-0d9abab4282e] Received OPTIONS request from 127.0.0.1:53032 for /api/v1/incidents
+2025/03/25 18:44:16 [Request:195008d3-e899-44ef-a448-0d9abab4282e] Completed in 0s
+2025/03/25 18:44:16 [Request:081eb839-9e87-46ed-bcf9-c2c7bc8fb577] Received GET request from 127.0.0.1:53032 for /api/v1/incidents
+2025/03/25 18:44:16 Authorized request from 127.0.0.1:53032
+2025/03/25 18:44:16 [Request:081eb839-9e87-46ed-bcf9-c2c7bc8fb577] Completed in 0s
+2025/03/25 18:44:16 [Request:8e73a189-4ab2-4fbe-8839-091ec74ee201] Received GET request from 127.0.0.1:53032 for /api/v1/incidents
+2025/03/25 18:44:16 Authorized request from 127.0.0.1:53032
+2025/03/25 18:44:16 [Request:8e73a189-4ab2-4fbe-8839-091ec74ee201] Completed in 530.1µs
+2025/03/25 18:45:01 Shutdown signal received, closing server gracefully...
+2025/03/25 18:45:53 API server starts on port 8080
+2025/03/25 18:45:58 [Request:979648fa-f789-4b2a-9d05-55c245b694bd] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:45:58 [Request:979648fa-f789-4b2a-9d05-55c245b694bd] Completed in 0s
+2025/03/25 18:45:58 [Request:85a1b9cc-a3f3-4311-99eb-0723a03fce6c] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:45:58 Authorized request from 127.0.0.1:53074
+2025/03/25 18:45:58 [Request:85a1b9cc-a3f3-4311-99eb-0723a03fce6c] Completed in 0s
+2025/03/25 18:45:58 [Request:953ad1cf-267a-4e75-87a3-fd6027991fb2] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:45:58 [Request:953ad1cf-267a-4e75-87a3-fd6027991fb2] Completed in 0s
+2025/03/25 18:45:58 [Request:a03e1dd2-c834-4181-8252-f49977f85605] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:45:58 Authorized request from 127.0.0.1:53074
+2025/03/25 18:45:58 [Request:a03e1dd2-c834-4181-8252-f49977f85605] Completed in 529.3µs
+2025/03/25 18:46:58 [Request:8fe9cbde-a1e9-4c95-a091-115a943138e6] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:46:58 [Request:8fe9cbde-a1e9-4c95-a091-115a943138e6] Completed in 0s
+2025/03/25 18:46:58 [Request:3d65c13b-4437-4d87-b766-ca499c801261] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:46:58 Authorized request from 127.0.0.1:53074
+2025/03/25 18:46:58 [Request:3d65c13b-4437-4d87-b766-ca499c801261] Completed in 530.2µs
+2025/03/25 18:46:58 [Request:6a7045c4-1164-4abd-bdb8-9adec71c3261] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:46:58 [Request:6a7045c4-1164-4abd-bdb8-9adec71c3261] Completed in 0s
+2025/03/25 18:46:58 [Request:889f1691-6d4a-44a9-905d-77c4de3aa872] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:46:58 Authorized request from 127.0.0.1:53074
+2025/03/25 18:46:58 [Request:889f1691-6d4a-44a9-905d-77c4de3aa872] Completed in 0s
+2025/03/25 18:47:59 [Request:8fa8497f-c3a3-4afe-bd5c-1238df7b0e41] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:47:59 [Request:8fa8497f-c3a3-4afe-bd5c-1238df7b0e41] Completed in 527µs
+2025/03/25 18:47:59 [Request:33b41a7e-3e23-4afb-a62c-3bb1fd826b65] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:47:59 Authorized request from 127.0.0.1:53074
+2025/03/25 18:47:59 [Request:33b41a7e-3e23-4afb-a62c-3bb1fd826b65] Completed in 522.3µs
+2025/03/25 18:47:59 [Request:f2e9e393-8c36-4ecb-9855-b479e4cb1136] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:47:59 [Request:f2e9e393-8c36-4ecb-9855-b479e4cb1136] Completed in 542µs
+2025/03/25 18:47:59 [Request:219c28f2-a7bf-4dce-999e-d0dbe94f1d76] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:47:59 Authorized request from 127.0.0.1:53074
+2025/03/25 18:47:59 [Request:219c28f2-a7bf-4dce-999e-d0dbe94f1d76] Completed in 547.9µs
+2025/03/25 18:49:00 [Request:45b32072-6406-435e-a60c-d6eb2ebb5731] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:49:00 [Request:45b32072-6406-435e-a60c-d6eb2ebb5731] Completed in 0s
+2025/03/25 18:49:00 [Request:056faa94-8aca-49b4-ade2-de5cac7a0aa8] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:49:00 Authorized request from 127.0.0.1:53074
+2025/03/25 18:49:00 [Request:056faa94-8aca-49b4-ade2-de5cac7a0aa8] Completed in 518.5µs
+2025/03/25 18:49:00 [Request:fae2067c-d3d5-45b4-83a1-02f5564a4ed4] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:49:00 [Request:fae2067c-d3d5-45b4-83a1-02f5564a4ed4] Completed in 0s
+2025/03/25 18:49:00 [Request:9e384995-0b2c-4fc0-9e86-79d12d556c22] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:49:00 Authorized request from 127.0.0.1:53074
+2025/03/25 18:49:00 [Request:9e384995-0b2c-4fc0-9e86-79d12d556c22] Completed in 531.8µs
+2025/03/25 18:50:00 [Request:1443d7f3-d27f-4df4-83c4-2daa8691cda8] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:50:00 [Request:1443d7f3-d27f-4df4-83c4-2daa8691cda8] Completed in 0s
+2025/03/25 18:50:00 [Request:d3a483ab-70a5-4c91-8e6a-448adf95aa47] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:50:00 Authorized request from 127.0.0.1:53074
+2025/03/25 18:50:00 [Request:d3a483ab-70a5-4c91-8e6a-448adf95aa47] Completed in 536µs
+2025/03/25 18:50:00 [Request:dafe37be-9fc9-4089-8327-09208dca8b25] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:50:00 [Request:dafe37be-9fc9-4089-8327-09208dca8b25] Completed in 530.5µs
+2025/03/25 18:50:00 [Request:54cbf782-6db3-4033-a6b2-be5c0a9e4464] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:50:00 Authorized request from 127.0.0.1:53074
+2025/03/25 18:50:00 [Request:54cbf782-6db3-4033-a6b2-be5c0a9e4464] Completed in 0s
+2025/03/25 18:51:01 [Request:a0fe0575-2868-4a71-83cd-32d345dd3b1c] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:51:01 [Request:a0fe0575-2868-4a71-83cd-32d345dd3b1c] Completed in 526.3µs
+2025/03/25 18:51:01 [Request:d861527c-f813-4a5a-aa4d-7da3745f498f] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:51:01 Authorized request from 127.0.0.1:53074
+2025/03/25 18:51:01 [Request:d861527c-f813-4a5a-aa4d-7da3745f498f] Completed in 527.1µs
+2025/03/25 18:51:01 [Request:43980903-289d-4a30-9716-7e16c215d679] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:51:01 [Request:43980903-289d-4a30-9716-7e16c215d679] Completed in 0s
+2025/03/25 18:51:01 [Request:ba7e17cd-3e9f-4539-8ed0-b92c0a3ee3e0] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:51:01 Authorized request from 127.0.0.1:53074
+2025/03/25 18:51:01 [Request:ba7e17cd-3e9f-4539-8ed0-b92c0a3ee3e0] Completed in 0s
+2025/03/25 18:51:40 [Request:31a19b4b-0006-4fac-bd74-f015d7fa2e77] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:51:40 [Request:31a19b4b-0006-4fac-bd74-f015d7fa2e77] Completed in 1.0373ms
+2025/03/25 18:51:40 [Request:88c6f2be-ddef-4ed0-bde3-fc85d7cf9c79] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:51:40 Authorized request from 127.0.0.1:53074
+2025/03/25 18:51:40 [Request:88c6f2be-ddef-4ed0-bde3-fc85d7cf9c79] Completed in 2.3205ms
+2025/03/25 18:51:40 [Request:e2f6b5bd-eed1-4ae5-9e7b-7f2d8c8853e5] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:51:40 [Request:e2f6b5bd-eed1-4ae5-9e7b-7f2d8c8853e5] Completed in 0s
+2025/03/25 18:51:40 [Request:62474a26-5d05-44e9-8b0e-d960daaa6d71] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:51:40 Authorized request from 127.0.0.1:53074
+2025/03/25 18:51:40 [Request:62474a26-5d05-44e9-8b0e-d960daaa6d71] Completed in 790.1µs
+2025/03/25 18:51:46 [Request:62fe29b8-f17e-4e11-b421-acd6a81b01e3] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:51:46 [Request:62fe29b8-f17e-4e11-b421-acd6a81b01e3] Completed in 0s
+2025/03/25 18:51:46 [Request:51cd5261-a10c-44a1-bdcf-22c99c00c041] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:51:46 Authorized request from 127.0.0.1:53074
+2025/03/25 18:51:46 [Request:51cd5261-a10c-44a1-bdcf-22c99c00c041] Completed in 505.2µs
+2025/03/25 18:51:46 [Request:4c9ab25a-ce1d-4b08-8824-2bcb824008bc] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:51:46 [Request:4c9ab25a-ce1d-4b08-8824-2bcb824008bc] Completed in 616.2µs
+2025/03/25 18:52:02 [Request:d93083d7-fcb2-4951-8a36-99af503e41a5] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:52:02 [Request:d93083d7-fcb2-4951-8a36-99af503e41a5] Completed in 529.3µs
+2025/03/25 18:52:02 [Request:a556e201-a4ff-4719-83d4-31ad60a7f4dc] Received GET request from 127.0.0.1:53074 for /api/v1/services
+2025/03/25 18:52:02 Authorized request from 127.0.0.1:53074
+2025/03/25 18:52:02 [Request:a556e201-a4ff-4719-83d4-31ad60a7f4dc] Completed in 551.7µs
+2025/03/25 18:52:02 [Request:fe12c7a0-c617-446f-9474-dca557c80fbe] Received OPTIONS request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:52:02 [Request:fe12c7a0-c617-446f-9474-dca557c80fbe] Completed in 539.3µs
+2025/03/25 18:52:02 [Request:78b50a3e-9224-42f2-aafb-d2f14721e4e9] Received GET request from 127.0.0.1:53074 for /api/v1/incidents
+2025/03/25 18:52:02 Authorized request from 127.0.0.1:53074
+2025/03/25 18:52:02 [Request:78b50a3e-9224-42f2-aafb-d2f14721e4e9] Completed in 529µs
+2025/03/25 18:52:21 Shutdown signal received, closing server gracefully...
+2025/03/25 18:53:16 API server starts on port 8080
+2025/03/25 18:53:22 [Request:03095739-8146-4d53-8c1d-2012a6b8ae37] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:53:22 [Request:03095739-8146-4d53-8c1d-2012a6b8ae37] Completed in 515µs
+2025/03/25 18:53:22 [Request:025f2772-2fcf-4bb9-8633-6098467a25fe] Received GET request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:53:22 Authorized request from 127.0.0.1:53253
+2025/03/25 18:53:22 [Request:025f2772-2fcf-4bb9-8633-6098467a25fe] Completed in 532.1µs
+2025/03/25 18:53:22 [Request:185bb04a-bb8e-492e-b003-91aa5febfc4a] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:53:22 [Request:185bb04a-bb8e-492e-b003-91aa5febfc4a] Completed in 597.1µs
+2025/03/25 18:53:22 [Request:ffab1c5f-d4ed-4e4c-9e11-365578a49a1e] Received GET request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:53:22 Authorized request from 127.0.0.1:53253
+2025/03/25 18:53:22 [Request:ffab1c5f-d4ed-4e4c-9e11-365578a49a1e] Completed in 593.2µs
+2025/03/25 18:54:22 [Request:56aaea2d-bf35-4ecc-9646-3821f0a5a170] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:54:22 [Request:56aaea2d-bf35-4ecc-9646-3821f0a5a170] Completed in 529.2µs
+2025/03/25 18:54:22 [Request:a40e0b7e-ca82-41c4-8b26-16e791340e5f] Received GET request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:54:22 Authorized request from 127.0.0.1:53253
+2025/03/25 18:54:22 [Request:a40e0b7e-ca82-41c4-8b26-16e791340e5f] Completed in 522.6µs
+2025/03/25 18:54:22 [Request:fbcf2ab7-ac61-4316-a156-0a715c318949] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:54:22 [Request:fbcf2ab7-ac61-4316-a156-0a715c318949] Completed in 530.6µs
+2025/03/25 18:54:22 [Request:80f0ab49-7074-4506-adf5-6d8e7472e6ca] Received GET request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:54:22 Authorized request from 127.0.0.1:53253
+2025/03/25 18:54:22 [Request:80f0ab49-7074-4506-adf5-6d8e7472e6ca] Completed in 528.3µs
+2025/03/25 18:55:23 [Request:79182f3d-7f4b-43e5-98d7-cf1cf321a6f8] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:55:23 [Request:79182f3d-7f4b-43e5-98d7-cf1cf321a6f8] Completed in 0s
+2025/03/25 18:55:23 [Request:4558a67c-8b1f-4b75-acb8-ce4eeb189794] Received GET request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:55:23 Authorized request from 127.0.0.1:53253
+2025/03/25 18:55:23 [Request:4558a67c-8b1f-4b75-acb8-ce4eeb189794] Completed in 527.7µs
+2025/03/25 18:55:23 [Request:8afcd879-29b2-46e3-97b5-a43627c82d29] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:55:23 [Request:8afcd879-29b2-46e3-97b5-a43627c82d29] Completed in 0s
+2025/03/25 18:55:23 [Request:83f9fc56-e756-4681-ab80-ba0876473bec] Received GET request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:55:23 Authorized request from 127.0.0.1:53253
+2025/03/25 18:55:23 [Request:83f9fc56-e756-4681-ab80-ba0876473bec] Completed in 0s
+2025/03/25 18:55:50 [Request:f9ff59e4-244f-4662-94ad-b75e69dbff63] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:55:50 [Request:f9ff59e4-244f-4662-94ad-b75e69dbff63] Completed in 542µs
+2025/03/25 18:55:50 [Request:0a01bf32-34bb-4144-9d4c-044ba2b0e465] Received GET request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:55:50 Authorized request from 127.0.0.1:53253
+2025/03/25 18:55:50 [Request:0a01bf32-34bb-4144-9d4c-044ba2b0e465] Completed in 0s
+2025/03/25 18:55:50 [Request:a809e221-13e2-4eae-ba67-a7ee8c960c6a] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:55:50 [Request:a809e221-13e2-4eae-ba67-a7ee8c960c6a] Completed in 528.6µs
+2025/03/25 18:55:50 [Request:40deec8f-5046-4d6c-897a-50cbb5447421] Received GET request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:55:50 Authorized request from 127.0.0.1:53253
+2025/03/25 18:55:50 [Request:40deec8f-5046-4d6c-897a-50cbb5447421] Completed in 0s
+2025/03/25 18:56:51 [Request:9c6f8aed-07ab-43d7-99ee-80ebdf87036f] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:56:51 [Request:9c6f8aed-07ab-43d7-99ee-80ebdf87036f] Completed in 0s
+2025/03/25 18:56:51 [Request:a1956df2-cc20-4176-824f-bb932fbd6878] Received GET request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:56:51 Authorized request from 127.0.0.1:53253
+2025/03/25 18:56:51 [Request:a1956df2-cc20-4176-824f-bb932fbd6878] Completed in 0s
+2025/03/25 18:56:51 [Request:c588f9e6-7658-4685-baf0-b04157b9bd4c] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:56:51 [Request:c588f9e6-7658-4685-baf0-b04157b9bd4c] Completed in 0s
+2025/03/25 18:56:51 [Request:82a6cd29-9b9f-4790-bc14-cb9b9edbe02a] Received GET request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:56:51 Authorized request from 127.0.0.1:53253
+2025/03/25 18:56:51 [Request:82a6cd29-9b9f-4790-bc14-cb9b9edbe02a] Completed in 516.5µs
+2025/03/25 18:57:51 [Request:55235cb2-146e-4b51-8a54-f44ee31c412b] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:57:51 [Request:55235cb2-146e-4b51-8a54-f44ee31c412b] Completed in 536.7µs
+2025/03/25 18:57:51 [Request:c9b03995-b9e6-4171-b812-98f6d1bcc2d6] Received GET request from 127.0.0.1:53253 for /api/v1/services
+2025/03/25 18:57:51 Authorized request from 127.0.0.1:53253
+2025/03/25 18:57:51 [Request:c9b03995-b9e6-4171-b812-98f6d1bcc2d6] Completed in 511.9µs
+2025/03/25 18:57:51 [Request:5d06a583-6aab-4d94-acaa-9866e5104bba] Received OPTIONS request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:57:51 [Request:5d06a583-6aab-4d94-acaa-9866e5104bba] Completed in 0s
+2025/03/25 18:57:51 [Request:16ae5859-3fb6-4f23-8d93-f3c7eb73b7fe] Received GET request from 127.0.0.1:53253 for /api/v1/incidents
+2025/03/25 18:57:51 Authorized request from 127.0.0.1:53253
+2025/03/25 18:57:51 [Request:16ae5859-3fb6-4f23-8d93-f3c7eb73b7fe] Completed in 533.9µs
+2025/03/25 18:57:59 Shutdown signal received, closing server gracefully...
+2025/03/25 18:59:48 API server starts on port 8080
+2025/03/25 18:59:52 [Request:0c4328b4-63de-4999-aebe-9531e81489d5] Received OPTIONS request from 127.0.0.1:53352 for /api/v1/services
+2025/03/25 18:59:52 [Request:0c4328b4-63de-4999-aebe-9531e81489d5] Completed in 0s
+2025/03/25 18:59:52 [Request:7c315866-e78f-4766-b780-eae95bb51287] Received GET request from 127.0.0.1:53352 for /api/v1/services
+2025/03/25 18:59:52 Authorized request from 127.0.0.1:53352
+2025/03/25 18:59:52 [Request:7c315866-e78f-4766-b780-eae95bb51287] Completed in 532.6µs
+2025/03/25 18:59:52 [Request:0ba9e4dc-f6ae-4616-9ce6-4a68dd70d316] Received OPTIONS request from 127.0.0.1:53352 for /api/v1/incidents
+2025/03/25 18:59:52 [Request:0ba9e4dc-f6ae-4616-9ce6-4a68dd70d316] Completed in 0s
+2025/03/25 18:59:52 [Request:8d9b7bf6-89de-4080-a5e5-880d0eb9e2e4] Received GET request from 127.0.0.1:53352 for /api/v1/incidents
+2025/03/25 18:59:52 Authorized request from 127.0.0.1:53352
+2025/03/25 18:59:52 [Request:8d9b7bf6-89de-4080-a5e5-880d0eb9e2e4] Completed in 1.0355ms
+2025/03/25 19:00:52 [Request:4ba16557-1553-41d4-950c-3d27ccd0c722] Received OPTIONS request from 127.0.0.1:53352 for /api/v1/services
+2025/03/25 19:00:52 [Request:4ba16557-1553-41d4-950c-3d27ccd0c722] Completed in 527.7µs
+2025/03/25 19:00:52 [Request:cb69b8db-8e44-449c-bb07-cb5b669fe78a] Received GET request from 127.0.0.1:53352 for /api/v1/services
+2025/03/25 19:00:52 Authorized request from 127.0.0.1:53352
+2025/03/25 19:00:52 [Request:cb69b8db-8e44-449c-bb07-cb5b669fe78a] Completed in 523µs
+2025/03/25 19:00:53 [Request:d89bc7d2-87eb-438f-83e3-a62ebf29b6d7] Received OPTIONS request from 127.0.0.1:53352 for /api/v1/incidents
+2025/03/25 19:00:53 [Request:d89bc7d2-87eb-438f-83e3-a62ebf29b6d7] Completed in 537µs
+2025/03/25 19:00:53 [Request:f5a69fc8-ad29-4b12-aa3b-98c76949e114] Received GET request from 127.0.0.1:53352 for /api/v1/incidents
+2025/03/25 19:00:53 Authorized request from 127.0.0.1:53352
+2025/03/25 19:00:53 [Request:f5a69fc8-ad29-4b12-aa3b-98c76949e114] Completed in 535.7µs
+2025/03/25 19:01:53 [Request:aed8c740-8f3f-4f14-b48b-47e344b00201] Received OPTIONS request from 127.0.0.1:53352 for /api/v1/services
+2025/03/25 19:01:53 [Request:aed8c740-8f3f-4f14-b48b-47e344b00201] Completed in 0s
+2025/03/25 19:01:53 [Request:d11bbc22-12d9-453d-a98f-d0255e2ed710] Received GET request from 127.0.0.1:53352 for /api/v1/services
+2025/03/25 19:01:53 Authorized request from 127.0.0.1:53352
+2025/03/25 19:01:53 [Request:d11bbc22-12d9-453d-a98f-d0255e2ed710] Completed in 522.8µs
+2025/03/25 19:01:53 [Request:a159154e-95ef-4263-a00e-9689e163b272] Received OPTIONS request from 127.0.0.1:53352 for /api/v1/incidents
+2025/03/25 19:01:53 [Request:a159154e-95ef-4263-a00e-9689e163b272] Completed in 528.6µs
+2025/03/25 19:01:53 [Request:8a9ebbc4-cea5-4a45-a372-8b9f29a04792] Received GET request from 127.0.0.1:53352 for /api/v1/incidents
+2025/03/25 19:01:53 Authorized request from 127.0.0.1:53352
+2025/03/25 19:01:53 [Request:8a9ebbc4-cea5-4a45-a372-8b9f29a04792] Completed in 552.6µs
+2025/03/25 19:02:06 Shutdown signal received, closing server gracefully...
+2025/03/25 19:02:09 API server starts on port 8080
+2025/03/25 19:02:33 Shutdown signal received, closing server gracefully...
+2025/03/25 19:03:00 API server starts on port 8080
+2025/03/25 19:03:08 [Request:1013ed7d-a939-4239-8fbd-e0af6d3fe0fe] Received OPTIONS request from 127.0.0.1:53454 for /api/v1/services
+2025/03/25 19:03:08 [Request:1013ed7d-a939-4239-8fbd-e0af6d3fe0fe] Completed in 0s
+2025/03/25 19:03:08 [Request:afae9a57-0b05-4939-8e96-4f55cc79fd2e] Received GET request from 127.0.0.1:53454 for /api/v1/services
+2025/03/25 19:03:08 Authorized request from 127.0.0.1:53454
+2025/03/25 19:03:08 [Request:afae9a57-0b05-4939-8e96-4f55cc79fd2e] Completed in 530.1µs
+2025/03/25 19:03:08 [Request:1f72815e-43a1-405d-8a15-0254c868431b] Received OPTIONS request from 127.0.0.1:53454 for /api/v1/incidents
+2025/03/25 19:03:08 [Request:1f72815e-43a1-405d-8a15-0254c868431b] Completed in 529.1µs
+2025/03/25 19:03:08 [Request:280496aa-25e2-4e55-ade8-b00198bec97d] Received GET request from 127.0.0.1:53454 for /api/v1/incidents
+2025/03/25 19:03:08 Authorized request from 127.0.0.1:53454
+2025/03/25 19:03:08 [Request:280496aa-25e2-4e55-ade8-b00198bec97d] Completed in 0s
+2025/03/25 19:03:22 [Request:ecb19a52-bb7b-4663-aa84-e156b5fd5873] Received OPTIONS request from 127.0.0.1:53454 for /api/v1/services
+2025/03/25 19:03:22 [Request:ecb19a52-bb7b-4663-aa84-e156b5fd5873] Completed in 535.2µs
+2025/03/25 19:03:22 [Request:6633c010-300a-46fb-bb21-75cf3c3380b1] Received GET request from 127.0.0.1:53454 for /api/v1/services
+2025/03/25 19:03:22 Authorized request from 127.0.0.1:53454
+2025/03/25 19:03:22 [Request:6633c010-300a-46fb-bb21-75cf3c3380b1] Completed in 0s
+2025/03/25 19:03:22 [Request:a5f924f6-28f5-4433-ba31-15238d41635e] Received OPTIONS request from 127.0.0.1:53454 for /api/v1/incidents
+2025/03/25 19:03:22 [Request:a5f924f6-28f5-4433-ba31-15238d41635e] Completed in 531.6µs
+2025/03/25 19:03:22 [Request:779c104a-c592-4194-b056-78f31161f09e] Received GET request from 127.0.0.1:53454 for /api/v1/incidents
+2025/03/25 19:03:22 Authorized request from 127.0.0.1:53454
+2025/03/25 19:03:22 [Request:779c104a-c592-4194-b056-78f31161f09e] Completed in 548µs
+2025/03/25 19:04:04 Shutdown signal received, closing server gracefully...
+2025/03/25 22:00:20 API server starts on port 8080
+2025/03/25 22:00:48 [Request:3dd41d84-cca0-4d26-a411-a3bdd6002ea3] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:00:48 [Request:3dd41d84-cca0-4d26-a411-a3bdd6002ea3] Completed in 505.6µs
+2025/03/25 22:00:48 [Request:ca696377-f9e7-42cf-9c29-243179cb6bff] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:00:48 Authorized request from 127.0.0.1:36705
+2025/03/25 22:00:48 [Request:ca696377-f9e7-42cf-9c29-243179cb6bff] Completed in 0s
+2025/03/25 22:00:48 [Request:f04e935e-a34f-4e95-b709-36ab186e0009] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:00:48 [Request:f04e935e-a34f-4e95-b709-36ab186e0009] Completed in 0s
+2025/03/25 22:00:48 [Request:0f1fdd85-8a6a-45f0-b66f-6567f3c7a18d] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:00:48 Authorized request from 127.0.0.1:36705
+2025/03/25 22:00:48 [Request:0f1fdd85-8a6a-45f0-b66f-6567f3c7a18d] Completed in 0s
+2025/03/25 22:01:49 [Request:c7d9f707-ccb6-42b9-9800-986ccaee1cc9] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:01:49 [Request:c7d9f707-ccb6-42b9-9800-986ccaee1cc9] Completed in 0s
+2025/03/25 22:01:49 [Request:8ca90963-00a4-4aa0-8a09-54ff1890f8ba] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:01:49 Authorized request from 127.0.0.1:36705
+2025/03/25 22:01:49 [Request:8ca90963-00a4-4aa0-8a09-54ff1890f8ba] Completed in 0s
+2025/03/25 22:01:49 [Request:faa49b33-99e2-4116-94bc-31b0b7c2ecd5] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:01:49 [Request:faa49b33-99e2-4116-94bc-31b0b7c2ecd5] Completed in 0s
+2025/03/25 22:01:49 [Request:e5148a4f-2f45-447d-93f0-80b430590730] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:01:49 Authorized request from 127.0.0.1:36705
+2025/03/25 22:01:49 [Request:e5148a4f-2f45-447d-93f0-80b430590730] Completed in 0s
+2025/03/25 22:02:51 [Request:84b9be83-9542-40ff-b904-76f6ee605113] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:02:51 [Request:84b9be83-9542-40ff-b904-76f6ee605113] Completed in 0s
+2025/03/25 22:02:51 [Request:bdfa926b-8bdf-4cf1-a72e-87a221c24793] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:02:51 Authorized request from 127.0.0.1:36705
+2025/03/25 22:02:51 [Request:bdfa926b-8bdf-4cf1-a72e-87a221c24793] Completed in 0s
+2025/03/25 22:02:52 [Request:3ad26d15-dcaf-484c-bedc-172e1005e5c1] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:02:52 [Request:3ad26d15-dcaf-484c-bedc-172e1005e5c1] Completed in 0s
+2025/03/25 22:02:52 [Request:0f06fa55-b882-409d-bbfb-19949df643f3] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:02:52 Authorized request from 127.0.0.1:36705
+2025/03/25 22:02:52 [Request:0f06fa55-b882-409d-bbfb-19949df643f3] Completed in 0s
+2025/03/25 22:03:50 [Request:c13e1330-a413-443c-879f-99abaf54fbbe] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:03:50 [Request:c13e1330-a413-443c-879f-99abaf54fbbe] Completed in 0s
+2025/03/25 22:03:50 [Request:4d1edfcc-1c00-4553-a328-57d4721f2e7f] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:03:50 Authorized request from 127.0.0.1:36705
+2025/03/25 22:03:50 [Request:4d1edfcc-1c00-4553-a328-57d4721f2e7f] Completed in 0s
+2025/03/25 22:03:50 [Request:f55c06ce-a3c0-4add-8907-2b62c15d3ea6] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:03:50 [Request:f55c06ce-a3c0-4add-8907-2b62c15d3ea6] Completed in 0s
+2025/03/25 22:03:50 [Request:2137ceed-acd0-4dab-a575-4b8d228a26cb] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:03:50 Authorized request from 127.0.0.1:36705
+2025/03/25 22:03:50 [Request:2137ceed-acd0-4dab-a575-4b8d228a26cb] Completed in 0s
+2025/03/25 22:04:51 [Request:26fd1302-762b-40bf-b974-43f9bb88c1d8] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:04:51 [Request:26fd1302-762b-40bf-b974-43f9bb88c1d8] Completed in 0s
+2025/03/25 22:04:51 [Request:93de9fac-492e-450c-b340-7db29513d04b] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:04:51 Authorized request from 127.0.0.1:36705
+2025/03/25 22:04:51 [Request:93de9fac-492e-450c-b340-7db29513d04b] Completed in 0s
+2025/03/25 22:04:51 [Request:c509a788-1ba5-428f-a8bf-b7a9939fe16d] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:04:51 [Request:c509a788-1ba5-428f-a8bf-b7a9939fe16d] Completed in 0s
+2025/03/25 22:04:51 [Request:47525940-af25-4de9-97c3-a286f7b1fc54] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:04:51 Authorized request from 127.0.0.1:36705
+2025/03/25 22:04:51 [Request:47525940-af25-4de9-97c3-a286f7b1fc54] Completed in 1.0042ms
+2025/03/25 22:05:51 [Request:d2d8723a-5a25-4b8f-a8f5-dcf1522f28d6] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:05:51 [Request:d2d8723a-5a25-4b8f-a8f5-dcf1522f28d6] Completed in 0s
+2025/03/25 22:05:51 [Request:3798a1a3-1141-4f21-a2e0-4542f7099a87] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:05:51 Authorized request from 127.0.0.1:36705
+2025/03/25 22:05:51 [Request:3798a1a3-1141-4f21-a2e0-4542f7099a87] Completed in 0s
+2025/03/25 22:05:51 [Request:4d548b5c-f6a8-4208-bae6-983072fcdcee] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:05:51 [Request:4d548b5c-f6a8-4208-bae6-983072fcdcee] Completed in 529.4µs
+2025/03/25 22:05:51 [Request:b12cdf3b-ccf7-4578-94da-af1a429543c1] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:05:51 Authorized request from 127.0.0.1:36705
+2025/03/25 22:05:51 [Request:b12cdf3b-ccf7-4578-94da-af1a429543c1] Completed in 0s
+2025/03/25 22:06:52 [Request:a671b150-97d5-4951-8033-dbf7bf290aec] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:06:52 [Request:a671b150-97d5-4951-8033-dbf7bf290aec] Completed in 0s
+2025/03/25 22:06:52 [Request:20646ee6-2aec-489a-9757-7987325d175e] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:06:52 Authorized request from 127.0.0.1:36705
+2025/03/25 22:06:52 [Request:20646ee6-2aec-489a-9757-7987325d175e] Completed in 0s
+2025/03/25 22:06:52 [Request:f9ec5a16-ace9-43e9-97d1-229c74feb075] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:06:52 [Request:f9ec5a16-ace9-43e9-97d1-229c74feb075] Completed in 0s
+2025/03/25 22:06:52 [Request:4fad07cd-1cb0-4e7f-a78c-1f8850827453] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:06:52 Authorized request from 127.0.0.1:36705
+2025/03/25 22:06:52 [Request:4fad07cd-1cb0-4e7f-a78c-1f8850827453] Completed in 0s
+2025/03/25 22:07:53 [Request:f3363d3c-e247-4958-888d-a58c1d42debd] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:07:53 [Request:f3363d3c-e247-4958-888d-a58c1d42debd] Completed in 0s
+2025/03/25 22:07:53 [Request:74024e11-06ef-4207-8f80-6b22e07bba09] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:07:53 Authorized request from 127.0.0.1:36705
+2025/03/25 22:07:53 [Request:74024e11-06ef-4207-8f80-6b22e07bba09] Completed in 506.9µs
+2025/03/25 22:07:53 [Request:aa06cb16-71d6-482f-853b-52c77bbc55db] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:07:53 [Request:aa06cb16-71d6-482f-853b-52c77bbc55db] Completed in 0s
+2025/03/25 22:07:53 [Request:80f85a56-a43d-40c6-a2a4-d99ba33c7249] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:07:53 Authorized request from 127.0.0.1:36705
+2025/03/25 22:07:53 [Request:80f85a56-a43d-40c6-a2a4-d99ba33c7249] Completed in 0s
+2025/03/25 22:08:54 [Request:92a62f10-5b85-4e89-aca7-cdb74c3d54f6] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:08:54 [Request:92a62f10-5b85-4e89-aca7-cdb74c3d54f6] Completed in 0s
+2025/03/25 22:08:54 [Request:fd9ade86-337b-47c8-a792-4a80ed1d4962] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:08:54 Authorized request from 127.0.0.1:36705
+2025/03/25 22:08:54 [Request:fd9ade86-337b-47c8-a792-4a80ed1d4962] Completed in 0s
+2025/03/25 22:08:54 [Request:5bcf3e71-5f48-494f-8572-7c9694b19395] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:08:54 [Request:5bcf3e71-5f48-494f-8572-7c9694b19395] Completed in 0s
+2025/03/25 22:08:54 [Request:574c6d25-7949-491c-9d84-8024efd16d8b] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:08:54 Authorized request from 127.0.0.1:36705
+2025/03/25 22:08:54 [Request:574c6d25-7949-491c-9d84-8024efd16d8b] Completed in 0s
+2025/03/25 22:09:54 [Request:5256041f-0a9b-4b7c-82ff-2a7fd38dd4f0] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:09:54 [Request:5256041f-0a9b-4b7c-82ff-2a7fd38dd4f0] Completed in 0s
+2025/03/25 22:09:54 [Request:03601977-c80a-4d0e-8e7f-70d11a69c179] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:09:54 Authorized request from 127.0.0.1:36705
+2025/03/25 22:09:54 [Request:03601977-c80a-4d0e-8e7f-70d11a69c179] Completed in 0s
+2025/03/25 22:09:54 [Request:ff7b729e-49ef-4249-9060-2fbfedea81e1] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:09:54 [Request:ff7b729e-49ef-4249-9060-2fbfedea81e1] Completed in 0s
+2025/03/25 22:09:54 [Request:c9fb3c3c-ea79-41e7-843d-004180611d79] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:09:54 Authorized request from 127.0.0.1:36705
+2025/03/25 22:09:54 [Request:c9fb3c3c-ea79-41e7-843d-004180611d79] Completed in 0s
+2025/03/25 22:10:55 [Request:290ed0fc-7991-47d6-9682-fe724e6bfa76] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:10:55 [Request:290ed0fc-7991-47d6-9682-fe724e6bfa76] Completed in 0s
+2025/03/25 22:10:55 [Request:c75cb4be-ab33-445f-9ad7-9de65e614c99] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:10:55 Authorized request from 127.0.0.1:36705
+2025/03/25 22:10:55 [Request:c75cb4be-ab33-445f-9ad7-9de65e614c99] Completed in 0s
+2025/03/25 22:10:55 [Request:34a48c9b-c27f-477d-83b2-5f259ad1a260] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:10:55 [Request:34a48c9b-c27f-477d-83b2-5f259ad1a260] Completed in 0s
+2025/03/25 22:10:55 [Request:d4d79001-3679-4f3b-983e-5ee27baf9217] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:10:55 Authorized request from 127.0.0.1:36705
+2025/03/25 22:10:55 [Request:d4d79001-3679-4f3b-983e-5ee27baf9217] Completed in 0s
+2025/03/25 22:11:56 [Request:6a59a618-550a-477e-8cf9-e426eac3d02a] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:11:56 [Request:6a59a618-550a-477e-8cf9-e426eac3d02a] Completed in 0s
+2025/03/25 22:11:56 [Request:391aa212-00f7-4ea5-92ce-07ff902f0ab5] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:11:56 Authorized request from 127.0.0.1:36705
+2025/03/25 22:11:56 [Request:391aa212-00f7-4ea5-92ce-07ff902f0ab5] Completed in 0s
+2025/03/25 22:11:56 [Request:bf407a34-f774-40e4-ba4b-8a476f8e1c4a] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:11:56 [Request:bf407a34-f774-40e4-ba4b-8a476f8e1c4a] Completed in 0s
+2025/03/25 22:11:56 [Request:0ce18b9d-a32d-46a5-82f2-7e562229d2a0] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:11:56 Authorized request from 127.0.0.1:36705
+2025/03/25 22:11:56 [Request:0ce18b9d-a32d-46a5-82f2-7e562229d2a0] Completed in 0s
+2025/03/25 22:13:02 [Request:da6a416a-2ebb-4840-83f8-9620f508af9e] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:13:02 [Request:da6a416a-2ebb-4840-83f8-9620f508af9e] Completed in 0s
+2025/03/25 22:13:05 [Request:ef1d0f10-fc4c-4d41-8237-0f63e69b1d48] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:13:05 Authorized request from 127.0.0.1:36705
+2025/03/25 22:13:05 [Request:ef1d0f10-fc4c-4d41-8237-0f63e69b1d48] Completed in 0s
+2025/03/25 22:13:05 [Request:ff2327d0-d7ef-4373-ba5b-2ffc16f386c1] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:13:05 [Request:ff2327d0-d7ef-4373-ba5b-2ffc16f386c1] Completed in 1.0103ms
+2025/03/25 22:13:05 [Request:3db8148b-6898-4123-b3bd-6cee9f7c5506] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:13:05 Authorized request from 127.0.0.1:36705
+2025/03/25 22:13:05 [Request:3db8148b-6898-4123-b3bd-6cee9f7c5506] Completed in 0s
+2025/03/25 22:13:57 [Request:e1c148a2-ebf3-4d3b-86f7-f303dabb5578] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:13:57 [Request:e1c148a2-ebf3-4d3b-86f7-f303dabb5578] Completed in 0s
+2025/03/25 22:13:57 [Request:96c675fe-a298-4e7d-84f3-b3c6c4fe9207] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:13:57 Authorized request from 127.0.0.1:36705
+2025/03/25 22:13:57 [Request:96c675fe-a298-4e7d-84f3-b3c6c4fe9207] Completed in 0s
+2025/03/25 22:13:57 [Request:44dc07f4-0e28-418e-9df8-64a32fd170fd] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:13:57 [Request:44dc07f4-0e28-418e-9df8-64a32fd170fd] Completed in 0s
+2025/03/25 22:13:57 [Request:ca7ac678-d638-4a78-aed5-c8359a6f1578] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:13:57 Authorized request from 127.0.0.1:36705
+2025/03/25 22:13:57 [Request:ca7ac678-d638-4a78-aed5-c8359a6f1578] Completed in 0s
+2025/03/25 22:14:57 [Request:83a441f1-4006-4584-8f02-79da5fe4e7d3] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:14:57 [Request:83a441f1-4006-4584-8f02-79da5fe4e7d3] Completed in 0s
+2025/03/25 22:14:57 [Request:96730824-636b-4ba6-a9e1-4a13579cec5e] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:14:57 Authorized request from 127.0.0.1:36705
+2025/03/25 22:14:57 [Request:96730824-636b-4ba6-a9e1-4a13579cec5e] Completed in 0s
+2025/03/25 22:14:57 [Request:5fd5ad39-be50-4def-9a2e-67a3b1cd0012] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:14:57 [Request:5fd5ad39-be50-4def-9a2e-67a3b1cd0012] Completed in 1.5053ms
+2025/03/25 22:14:57 [Request:9602c77c-f4d5-446b-8bf5-0535872d915e] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:14:57 Authorized request from 127.0.0.1:36705
+2025/03/25 22:14:57 [Request:9602c77c-f4d5-446b-8bf5-0535872d915e] Completed in 0s
+2025/03/25 22:15:58 [Request:d71a020e-49d6-457d-8bc4-250c15d58dc9] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:15:58 [Request:d71a020e-49d6-457d-8bc4-250c15d58dc9] Completed in 0s
+2025/03/25 22:15:58 [Request:38170e14-570d-494c-a84d-ae5e2a91db29] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:15:58 Authorized request from 127.0.0.1:36705
+2025/03/25 22:15:58 [Request:38170e14-570d-494c-a84d-ae5e2a91db29] Completed in 0s
+2025/03/25 22:15:58 [Request:099cb137-a876-4c2d-8f3f-63efb7a6d580] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:15:58 [Request:099cb137-a876-4c2d-8f3f-63efb7a6d580] Completed in 0s
+2025/03/25 22:15:58 [Request:ce19cde3-4932-456a-865f-c7cae658265d] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:15:58 Authorized request from 127.0.0.1:36705
+2025/03/25 22:15:58 [Request:ce19cde3-4932-456a-865f-c7cae658265d] Completed in 0s
+2025/03/25 22:17:01 [Request:c307f6f6-cd1b-4961-87a1-85e9c5ec3e56] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:17:01 [Request:c307f6f6-cd1b-4961-87a1-85e9c5ec3e56] Completed in 0s
+2025/03/25 22:17:01 [Request:489d4dea-afbb-49f4-8222-bdde5999fa51] Received GET request from 127.0.0.1:36705 for /api/v1/services
+2025/03/25 22:17:01 Authorized request from 127.0.0.1:36705
+2025/03/25 22:17:01 [Request:489d4dea-afbb-49f4-8222-bdde5999fa51] Completed in 0s
+2025/03/25 22:17:01 [Request:0e035fc6-a8a8-4bcd-a775-43beecfe4c3a] Received OPTIONS request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:17:01 [Request:0e035fc6-a8a8-4bcd-a775-43beecfe4c3a] Completed in 0s
+2025/03/25 22:17:01 [Request:5ef40bbc-0c28-437f-9de8-f746d38b2242] Received GET request from 127.0.0.1:36705 for /api/v1/incidents
+2025/03/25 22:17:01 Authorized request from 127.0.0.1:36705
+2025/03/25 22:17:01 [Request:5ef40bbc-0c28-437f-9de8-f746d38b2242] Completed in 14.2847ms
+2025/03/25 22:36:33 API server starts on port 8080
+2025/03/25 22:37:09 [Request:c6cb23cc-d07b-4785-8bc4-92329ade4c67] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:37:09 [Request:c6cb23cc-d07b-4785-8bc4-92329ade4c67] Completed in 511.5µs
+2025/03/25 22:37:09 [Request:a9a61ee1-3eba-42e8-961a-1595d0e772a8] Received GET request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:37:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:37:09 [Request:a9a61ee1-3eba-42e8-961a-1595d0e772a8] Completed in 504.6µs
+2025/03/25 22:37:09 [Request:d7ae1513-6475-456c-a215-4ce697169997] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:37:09 [Request:d7ae1513-6475-456c-a215-4ce697169997] Completed in 0s
+2025/03/25 22:37:09 [Request:5e6581ec-f489-44e8-bc12-474ad2827918] Received GET request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:37:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:37:09 [Request:5e6581ec-f489-44e8-bc12-474ad2827918] Completed in 508.3µs
+2025/03/25 22:38:09 [Request:40dfac96-2f06-4ee4-9c89-53b1b82553e5] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:38:09 [Request:40dfac96-2f06-4ee4-9c89-53b1b82553e5] Completed in 0s
+2025/03/25 22:38:09 [Request:d8c70baf-73a7-4ac1-ad18-5d1e901aca08] Received GET request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:38:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:38:09 [Request:d8c70baf-73a7-4ac1-ad18-5d1e901aca08] Completed in 0s
+2025/03/25 22:38:09 [Request:74a667dc-6ce3-4288-8fc7-71946d66ba9b] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:38:09 [Request:74a667dc-6ce3-4288-8fc7-71946d66ba9b] Completed in 0s
+2025/03/25 22:38:09 [Request:e549f95e-4170-499f-84c4-352eb1a094d5] Received GET request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:38:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:38:09 [Request:e549f95e-4170-499f-84c4-352eb1a094d5] Completed in 0s
+2025/03/25 22:39:09 [Request:ca3f5da6-071a-4f26-81ce-d31faa6923f0] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:39:09 [Request:ca3f5da6-071a-4f26-81ce-d31faa6923f0] Completed in 0s
+2025/03/25 22:39:09 [Request:318ffb8d-3e81-4592-9178-e14b939a1280] Received GET request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:39:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:39:09 [Request:318ffb8d-3e81-4592-9178-e14b939a1280] Completed in 506.4µs
+2025/03/25 22:39:09 [Request:c3e577c5-04ed-4348-bb04-2ee05cf0be54] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:39:09 [Request:c3e577c5-04ed-4348-bb04-2ee05cf0be54] Completed in 0s
+2025/03/25 22:39:09 [Request:d57d1c3d-2c90-4f01-825c-255a4819f115] Received GET request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:39:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:39:09 [Request:d57d1c3d-2c90-4f01-825c-255a4819f115] Completed in 1.5862ms
+2025/03/25 22:40:09 [Request:5b56a5e3-d23b-40b2-b2c3-4d9591efc286] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:40:09 [Request:5b56a5e3-d23b-40b2-b2c3-4d9591efc286] Completed in 0s
+2025/03/25 22:40:09 [Request:b89512f1-c587-4026-9a81-680348733092] Received GET request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:40:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:40:09 [Request:b89512f1-c587-4026-9a81-680348733092] Completed in 0s
+2025/03/25 22:40:09 [Request:e8d075ef-a519-43ba-a8e1-cd0f31068b51] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:40:09 [Request:e8d075ef-a519-43ba-a8e1-cd0f31068b51] Completed in 0s
+2025/03/25 22:40:09 [Request:21ccd2e2-4920-4a10-aa32-4059a716b815] Received GET request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:40:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:40:09 [Request:21ccd2e2-4920-4a10-aa32-4059a716b815] Completed in 0s
+2025/03/25 22:41:09 [Request:115f49c8-ff48-4bec-af92-3a0a95deaadf] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:41:09 [Request:115f49c8-ff48-4bec-af92-3a0a95deaadf] Completed in 0s
+2025/03/25 22:41:09 [Request:c86ee674-95e8-4413-bd01-098e4fc49d50] Received GET request from 127.0.0.1:37575 for /api/v1/services
+2025/03/25 22:41:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:41:09 [Request:c86ee674-95e8-4413-bd01-098e4fc49d50] Completed in 507.5µs
+2025/03/25 22:41:09 [Request:0206679e-3fcd-4445-82b1-c295cc076063] Received OPTIONS request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:41:09 [Request:0206679e-3fcd-4445-82b1-c295cc076063] Completed in 0s
+2025/03/25 22:41:09 [Request:077dd9ab-544c-4647-a344-1fee6ba8d642] Received GET request from 127.0.0.1:37575 for /api/v1/incidents
+2025/03/25 22:41:09 Authorized request from 127.0.0.1:37575
+2025/03/25 22:41:09 [Request:077dd9ab-544c-4647-a344-1fee6ba8d642] Completed in 0s
+2025/03/25 22:49:12 [Request:b838b702-e4f4-4f40-b0f5-bc3a81a86609] Received OPTIONS request from 127.0.0.1:37778 for /api/v1/services
+2025/03/25 22:49:12 [Request:b838b702-e4f4-4f40-b0f5-bc3a81a86609] Completed in 1.04ms
+2025/03/25 22:49:12 [Request:80699053-621f-404a-a9c9-19c12c50aee9] Received GET request from 127.0.0.1:37778 for /api/v1/services
+2025/03/25 22:49:12 Authorized request from 127.0.0.1:37778
+2025/03/25 22:49:12 [Request:80699053-621f-404a-a9c9-19c12c50aee9] Completed in 0s
+2025/03/25 22:49:12 [Request:97fc933a-57e6-419b-8008-ca716cf84c37] Received GET request from 127.0.0.1:37778 for /api/v1/services
+2025/03/25 22:49:12 Authorized request from 127.0.0.1:37778
+2025/03/25 22:49:12 [Request:97fc933a-57e6-419b-8008-ca716cf84c37] Completed in 0s
+2025/03/25 22:49:12 [Request:060a44af-23bb-4b97-bf8a-6b495560896a] Received OPTIONS request from 127.0.0.1:37778 for /api/v1/incidents
+2025/03/25 22:49:12 [Request:060a44af-23bb-4b97-bf8a-6b495560896a] Completed in 0s
+2025/03/25 22:49:12 [Request:9ef1d434-2241-4c65-ba7c-0455b32116d2] Received GET request from 127.0.0.1:37778 for /api/v1/incidents
+2025/03/25 22:49:12 Authorized request from 127.0.0.1:37778
+2025/03/25 22:49:12 [Request:9ef1d434-2241-4c65-ba7c-0455b32116d2] Completed in 0s
+2025/03/25 22:49:12 [Request:a22bb736-1370-4b2d-aebe-acd1f8485d63] Received GET request from 127.0.0.1:37778 for /api/v1/incidents
+2025/03/25 22:49:12 Authorized request from 127.0.0.1:37778
+2025/03/25 22:49:12 [Request:a22bb736-1370-4b2d-aebe-acd1f8485d63] Completed in 0s

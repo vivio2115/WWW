@@ -126,7 +126,11 @@ const statusColors: Record<ReportStatus, StatusIndicator> = {
   },
 };
 
-export default function AdminPanel() {
+interface AdminPanelProps {
+  defaultTab?: "all" | "pending" | "approved" | "rejected";
+}
+
+export default function AdminPanel({ defaultTab = "pending" }: AdminPanelProps) {
   const [reports, setReports] = useState<ScamReport[]>(MOCK_REPORTS);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedReport, setSelectedReport] = useState<ScamReport | null>(null);
@@ -160,14 +164,14 @@ export default function AdminPanel() {
 
     setReports(
       reports.map((report) =>
-        report.id === reportId 
-          ? { 
-              ...report, 
-              status: "approved", 
+        report.id === reportId
+          ? {
+              ...report,
+              status: "approved",
               verificationNote: verificationNote,
               verifiedBy: "admin", // W rzeczywistej aplikacji byłby to aktualnie zalogowany użytkownik
               verificationDate: currentDate
-            } 
+            }
           : report
       )
     );
@@ -186,14 +190,14 @@ export default function AdminPanel() {
 
     setReports(
       reports.map((report) =>
-        report.id === reportId 
-          ? { 
-              ...report, 
-              status: "rejected", 
+        report.id === reportId
+          ? {
+              ...report,
+              status: "rejected",
               verificationNote: verificationNote,
               verifiedBy: "admin", // W rzeczywistej aplikacji byłby to aktualnie zalogowany użytkownik
               verificationDate: currentDate
-            } 
+            }
           : report
       )
     );
@@ -235,7 +239,7 @@ export default function AdminPanel() {
         </div>
       </div>
 
-      <Tabs defaultValue="pending" className="w-full">
+      <Tabs defaultValue={defaultTab} className="w-full">
         <TabsList className="mb-6 bg-zinc-800 p-1">
           <TabsTrigger value="all" className="data-[state=active]:bg-zinc-700">
             Wszystkie ({getFilteredReports("all").length})
@@ -340,8 +344,8 @@ export default function AdminPanel() {
               <span className="text-sm font-normal text-zinc-400">{selectedReport?.id}</span>
             </DialogTitle>
             <DialogDescription className="text-zinc-400">
-              {isVerifying 
-                ? "Weryfikacja zgłoszenia - dodaj opis weryfikacji przed podjęciem decyzji" 
+              {isVerifying
+                ? "Weryfikacja zgłoszenia - dodaj opis weryfikacji przed podjęciem decyzji"
                 : "Pełne informacje o zgłoszonym oszuście."}
             </DialogDescription>
           </DialogHeader>
@@ -360,7 +364,7 @@ export default function AdminPanel() {
                       {statusColors[selectedReport.status].icon}
                       {statusColors[selectedReport.status].label}
                     </Badge>
-                    
+
                     {selectedReport.verificationDate && (
                       <p className="text-zinc-500 text-xs mt-1">
                         Zweryfikowano: {selectedReport.verificationDate} przez {selectedReport.verifiedBy}
@@ -414,7 +418,7 @@ export default function AdminPanel() {
                   {selectedReport.description}
                 </p>
               </div>
-              
+
               {/* Sekcja weryfikacji i notatek administratora */}
               {((selectedReport.status !== "pending" && selectedReport.verificationNote) || isVerifying) && (
                 <div>
