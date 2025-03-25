@@ -7,17 +7,18 @@ import { CheckCircle, XCircle, Edit, Search, Filter, AlertTriangle, Eye } from "
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
+import type { ScamReport, StatusIndicator, ReportStatus } from "@/types/admin";
 
 // Mock data do przykładu
-const MOCK_REPORTS = [
+const MOCK_REPORTS: ScamReport[] = [
   {
     id: "RPT-2023-001",
     scammerData: {
@@ -32,6 +33,7 @@ const MOCK_REPORTS = [
     reportedBy: "anonymous",
     date: "2023-05-15",
     status: "pending",
+    verificationNote: "",
   },
   {
     id: "RPT-2023-002",
@@ -47,6 +49,9 @@ const MOCK_REPORTS = [
     reportedBy: "jan.kowalski@example.com",
     date: "2023-06-10",
     status: "approved",
+    verificationNote: "Potwierdzone oszustwo. Sklep nie istnieje, a dane kontaktowe są fikcyjne. Potwierdzono 15 poszkodowanych na kwotę ponad 25 000 zł.",
+    verifiedBy: "admin",
+    verificationDate: "2023-06-15",
   },
   {
     id: "RPT-2023-003",
@@ -62,6 +67,9 @@ const MOCK_REPORTS = [
     reportedBy: "ofiara@example.com",
     date: "2023-07-20",
     status: "rejected",
+    verificationNote: "Brak wystarczających dowodów na oszustwo. Zgłaszający nie dostarczył konkretnych przykładów ani dowodów potwierdzających oszustwo.",
+    verifiedBy: "admin",
+    verificationDate: "2023-07-22",
   },
   {
     id: "RPT-2023-004",
@@ -77,6 +85,7 @@ const MOCK_REPORTS = [
     reportedBy: "another@example.com",
     date: "2023-08-05",
     status: "pending",
+    verificationNote: "",
   },
   {
     id: "RPT-2023-005",
@@ -92,10 +101,11 @@ const MOCK_REPORTS = [
     reportedBy: "family@example.com",
     date: "2023-09-15",
     status: "pending",
+    verificationNote: "",
   },
 ];
 
-const statusColors = {
+const statusColors: Record<ReportStatus, StatusIndicator> = {
   pending: {
     bg: "bg-yellow-500/10",
     text: "text-yellow-500",
@@ -117,13 +127,15 @@ const statusColors = {
 };
 
 export default function AdminPanel() {
-  const [reports, setReports] = useState(MOCK_REPORTS);
+  const [reports, setReports] = useState<ScamReport[]>(MOCK_REPORTS);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedReport, setSelectedReport] = useState<any>(null);
+  const [selectedReport, setSelectedReport] = useState<ScamReport | null>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [verificationNote, setVerificationNote] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
 
   // Filtrowanie zgłoszeń według statusu i wyszukiwania
-  const getFilteredReports = (status: string) => {
+  const getFilteredReports = (status: string): ScamReport[] => {
     return reports.filter((report) => {
       const matchesSearch =
         searchTerm === "" ||
@@ -139,24 +151,66 @@ export default function AdminPanel() {
   };
 
   const handleApprove = (reportId: string) => {
+    if (!verificationNote || verificationNote.trim() === "") {
+      alert("Proszę dodać opis weryfikacji przed zatwierdzeniem zgłoszenia");
+      return;
+    }
+
+    const currentDate = new Date().toISOString().split('T')[0];
+
     setReports(
       reports.map((report) =>
-        report.id === reportId ? { ...report, status: "approved" } : report
+        report.id === reportId 
+          ? { 
+              ...report, 
+              status: "approved", 
+              verificationNote: verificationNote,
+              verifiedBy: "admin", // W rzeczywistej aplikacji byłby to aktualnie zalogowany użytkownik
+              verificationDate: currentDate
+            } 
+          : report
       )
     );
+    setIsVerifying(false);
+    setIsDetailsOpen(false);
+    setVerificationNote("");
   };
 
   const handleReject = (reportId: string) => {
+    if (!verificationNote || verificationNote.trim() === "") {
+      alert("Proszę dodać powód odrzucenia zgłoszenia");
+      return;
+    }
+
+    const currentDate = new Date().toISOString().split('T')[0];
+
     setReports(
       reports.map((report) =>
-        report.id === reportId ? { ...report, status: "rejected" } : report
+        report.id === reportId 
+          ? { 
+              ...report, 
+              status: "rejected", 
+              verificationNote: verificationNote,
+              verifiedBy: "admin", // W rzeczywistej aplikacji byłby to aktualnie zalogowany użytkownik
+              verificationDate: currentDate
+            } 
+          : report
       )
     );
+    setIsVerifying(false);
+    setIsDetailsOpen(false);
+    setVerificationNote("");
   };
 
-  const handleViewDetails = (report: any) => {
+  const handleViewDetails = (report: ScamReport) => {
     setSelectedReport(report);
+    setVerificationNote(report.verificationNote || "");
+    setIsVerifying(false);
     setIsDetailsOpen(true);
+  };
+
+  const handleStartVerification = () => {
+    setIsVerifying(true);
   };
 
   return (
@@ -212,12 +266,12 @@ export default function AdminPanel() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
                             <Badge
-                              className={`${statusColors[report.status as keyof typeof statusColors].bg} ${
-                                statusColors[report.status as keyof typeof statusColors].text
+                              className={`${statusColors[report.status].bg} ${
+                                statusColors[report.status].text
                               } flex items-center gap-1`}
                             >
-                              {statusColors[report.status as keyof typeof statusColors].icon}
-                              {statusColors[report.status as keyof typeof statusColors].label}
+                              {statusColors[report.status].icon}
+                              {statusColors[report.status].label}
                             </Badge>
                             <span className="text-xs text-zinc-500">{report.id}</span>
                           </div>
@@ -249,17 +303,12 @@ export default function AdminPanel() {
                                 variant="outline"
                                 size="sm"
                                 className="border-green-700 text-green-500 hover:bg-green-900/20 hover:border-green-600"
-                                onClick={() => handleApprove(report.id)}
+                                onClick={() => {
+                                  handleViewDetails(report);
+                                  handleStartVerification();
+                                }}
                               >
-                                <CheckCircle className="h-4 w-4 mr-2" /> Zatwierdź
-                              </Button>
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="border-red-700 text-red-500 hover:bg-red-900/20 hover:border-red-600"
-                                onClick={() => handleReject(report.id)}
-                              >
-                                <XCircle className="h-4 w-4 mr-2" /> Odrzuć
+                                <CheckCircle className="h-4 w-4 mr-2" /> Weryfikuj
                               </Button>
                             </>
                           )}
@@ -291,7 +340,9 @@ export default function AdminPanel() {
               <span className="text-sm font-normal text-zinc-400">{selectedReport?.id}</span>
             </DialogTitle>
             <DialogDescription className="text-zinc-400">
-              Pełne informacje o zgłoszonym oszuście.
+              {isVerifying 
+                ? "Weryfikacja zgłoszenia - dodaj opis weryfikacji przed podjęciem decyzji" 
+                : "Pełne informacje o zgłoszonym oszuście."}
             </DialogDescription>
           </DialogHeader>
 
@@ -302,13 +353,19 @@ export default function AdminPanel() {
                   <div>
                     <h3 className="text-sm font-medium text-zinc-500 mb-1">Status zgłoszenia</h3>
                     <Badge
-                      className={`${statusColors[selectedReport.status as keyof typeof statusColors].bg} ${
-                        statusColors[selectedReport.status as keyof typeof statusColors].text
+                      className={`${statusColors[selectedReport.status].bg} ${
+                        statusColors[selectedReport.status].text
                       } flex items-center gap-1`}
                     >
-                      {statusColors[selectedReport.status as keyof typeof statusColors].icon}
-                      {statusColors[selectedReport.status as keyof typeof statusColors].label}
+                      {statusColors[selectedReport.status].icon}
+                      {statusColors[selectedReport.status].label}
                     </Badge>
+                    
+                    {selectedReport.verificationDate && (
+                      <p className="text-zinc-500 text-xs mt-1">
+                        Zweryfikowano: {selectedReport.verificationDate} przez {selectedReport.verifiedBy}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -352,33 +409,64 @@ export default function AdminPanel() {
               </div>
 
               <div>
-                <h3 className="text-sm font-medium text-zinc-500 mb-2">Opis oszustwa</h3>
+                <h3 className="text-sm font-medium text-zinc-500 mb-2">Opis oszustwa ze zgłoszenia</h3>
                 <p className="text-zinc-300 bg-zinc-950 p-3 rounded border border-zinc-800">
                   {selectedReport.description}
                 </p>
               </div>
+              
+              {/* Sekcja weryfikacji i notatek administratora */}
+              {((selectedReport.status !== "pending" && selectedReport.verificationNote) || isVerifying) && (
+                <div>
+                  <h3 className="text-sm font-medium text-zinc-500 mb-2">
+                    {isVerifying ? "Dodaj opis weryfikacji:" : "Opis weryfikacji:"}
+                  </h3>
+                  {isVerifying ? (
+                    <Textarea
+                      placeholder="Wprowadź opis weryfikacji lub powód odrzucenia..."
+                      className="bg-zinc-950 border-zinc-800 text-zinc-300 min-h-[120px]"
+                      value={verificationNote}
+                      onChange={(e) => setVerificationNote(e.target.value)}
+                    />
+                  ) : (
+                    <p className="text-zinc-300 bg-zinc-950 p-3 rounded border border-zinc-800">
+                      {selectedReport.verificationNote}
+                    </p>
+                  )}
+                </div>
+              )}
 
               <div className="flex justify-between gap-4 pt-4">
-                {selectedReport.status === "pending" ? (
+                {isVerifying ? (
                   <>
                     <Button
                       variant="outline"
                       className="border-red-700 text-red-500 hover:bg-red-900/20 hover:border-red-600 flex-1"
-                      onClick={() => {
-                        handleReject(selectedReport.id);
-                        setIsDetailsOpen(false);
-                      }}
+                      onClick={() => handleReject(selectedReport.id)}
                     >
                       <XCircle className="h-4 w-4 mr-2" /> Odrzuć zgłoszenie
                     </Button>
                     <Button
                       className="bg-green-600 hover:bg-green-700 flex-1"
-                      onClick={() => {
-                        handleApprove(selectedReport.id);
-                        setIsDetailsOpen(false);
-                      }}
+                      onClick={() => handleApprove(selectedReport.id)}
                     >
                       <CheckCircle className="h-4 w-4 mr-2" /> Zatwierdź zgłoszenie
+                    </Button>
+                  </>
+                ) : selectedReport.status === "pending" ? (
+                  <>
+                    <Button
+                      variant="outline"
+                      className="border-zinc-700 hover:bg-zinc-800 w-1/2"
+                      onClick={() => setIsDetailsOpen(false)}
+                    >
+                      Zamknij
+                    </Button>
+                    <Button
+                      className="bg-red-600 hover:bg-red-700 w-1/2"
+                      onClick={handleStartVerification}
+                    >
+                      Rozpocznij weryfikację
                     </Button>
                   </>
                 ) : (

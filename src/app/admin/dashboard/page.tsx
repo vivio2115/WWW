@@ -66,7 +66,7 @@ export default function AdminDashboardPage() {
                 ))}
 
                 <div className="px-4 py-6 border-t border-zinc-800">
-                  <Link href="/" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-300 text-sm">
+                  <Link href="/admin/login" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-300 text-sm">
                     <LogOut className="h-4 w-4" />
                     <span>Wyloguj się</span>
                   </Link>
@@ -154,12 +154,23 @@ export default function AdminDashboardPage() {
                         <td className="py-3 px-4 text-zinc-400 text-sm">{report.reporter}</td>
                         <td className="py-3 px-4">
                           <div className="flex gap-2">
-                            <Button variant="outline" size="sm" className="h-8 border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-700">
-                              Sprawdź
-                            </Button>
-                            <Button size="sm" className="h-8 bg-red-600 hover:bg-red-700 text-white">
-                              Zweryfikuj
-                            </Button>
+                            <Link href={`/admin/dashboard/zgloszenia?id=${report.id}`}>
+                              <Button 
+                                variant="outline" 
+                                size="sm" 
+                                className="h-8 border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-700"
+                              >
+                                Szczegóły
+                              </Button>
+                            </Link>
+                            <Link href={`/admin/dashboard/zgloszenia?id=${report.id}&action=verify`}>
+                              <Button 
+                                size="sm" 
+                                className="h-8 bg-red-600 hover:bg-red-700 text-white"
+                              >
+                                Weryfikuj
+                              </Button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
@@ -168,9 +179,14 @@ export default function AdminDashboardPage() {
                 </table>
               </div>
               <div className="flex justify-center mt-6">
-                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-700">
-                  Pokaż wszystkie zgłoszenia
-                </Button>
+                <Link href="/admin/dashboard/zgloszenia">
+                  <Button 
+                    variant="outline" 
+                    className="border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-700"
+                  >
+                    Pokaż wszystkie zgłoszenia
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
