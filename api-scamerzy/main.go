@@ -3,16 +3,19 @@ package main
 import (
 	"bytes"
 	"context"
+	"database/sql"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
+	"math/rand"
 	"mime/multipart"
 	"net/http"
 	"net/url"
 	"os"
 	"os/signal"
+	"strconv"
 	"strings"
 	"sync"
 	"syscall"
@@ -20,7 +23,73 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
+	"github.com/lib/pq"
 )
+
+var db *sql.DB
+
+func initDB() {
+	connStr := os.Getenv("DATABASE_URL") // np. "postgres://user:password@localhost/statusdb?sslmode=disable"
+	var err error
+	db, err = sql.Open("postgres", connStr)
+	if err != nil {
+		log.Fatalf("Error opening database connection: %v", err)
+	}
+	// Opcjonalnie: sprawdzenie połączenia
+	if err = db.Ping(); err != nil {
+		log.Fatalf("Error pinging database: %v", err)
+	}
+	log.Println("Connected to PostgreSQL")
+}
+
+func queryServices() ([]Service, error) {
+	rows, err := db.Query(`SELECT name, status, uptime, last_updated, response, load_trend FROM services`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var services []Service
+	for rows.Next() {
+		var s Service
+		var lastUpdated time.Time
+		var loadTrend []int64
+		if err := rows.Scan(&s.Name, &s.Status, &s.Uptime, &lastUpdated, &s.Response, pq.Array(&loadTrend)); err != nil {
+			return nil, err
+		}
+		s.LastUpdated = lastUpdated.Format("2006-01-02 15:04:05")
+		s.LoadTrend = make([]int, len(loadTrend))
+		for i, v := range loadTrend {
+			s.LoadTrend[i] = int(v)
+		}
+		services = append(services, s)
+	}
+	return services, nil
+}
+
+func queryIncidents() ([]Incident, error) {
+	rows, err := db.Query(`SELECT date, title, status, updates FROM incidents`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var incidents []Incident
+	for rows.Next() {
+		var inc Incident
+		var date time.Time
+		var updatesJSON []byte
+		if err := rows.Scan(&date, &inc.Title, &inc.Status, &updatesJSON); err != nil {
+			return nil, err
+		}
+		inc.Date = date.Format("2006-01-02 15:04:05")
+		if err := json.Unmarshal(updatesJSON, &inc.Updates); err != nil {
+			return nil, err
+		}
+		incidents = append(incidents, inc)
+	}
+	return incidents, nil
+}
 
 type Data struct {
 	Data string `json:"data"`
@@ -47,12 +116,12 @@ type ScammerReport struct {
 }
 
 type Service struct {
-	Name        string    `json:"name"`
-	Status      string    `json:"status"`      // operational, partial_outage, failed, itd.
-	Uptime      string    `json:"uptime"`      // np. "99.99%"
-	LastUpdated time.Time `json:"lastUpdated"` // data ostatniej aktualizacji
-	Response    string    `json:"response"`    // np. "45ms" opóźnienie odpowiedzi
-	LoadTrend   []int     `json:"loadTrend"`   // trend obciążenia (może posłużyć do wykresu)
+	Name        string `json:"name"`
+	Status      string `json:"status"`      // operational, partial_outage, failed, itd.
+	Uptime      string `json:"uptime"`      // np. "99.99%"
+	LastUpdated string `json:"lastUpdated"` // data ostatniej aktualizacji – teraz jako string
+	Response    string `json:"response"`    // np. "45ms" opóźnienie odpowiedzi
+	LoadTrend   []int  `json:"loadTrend"`   // trend obciążenia (może posłużyć do wykresu)
 }
 
 type Incident struct {
@@ -121,7 +190,7 @@ var servicesData = []Service{
 		Name:        "Strona główna",
 		Status:      "operational",
 		Uptime:      "99.99%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "45ms",
 		LoadTrend:   []int{98, 97, 99, 98, 100, 99, 100, 99, 100, 99, 100},
 	},
@@ -129,7 +198,7 @@ var servicesData = []Service{
 		Name:        "API",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -137,7 +206,7 @@ var servicesData = []Service{
 		Name:        "Baza danych",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -145,7 +214,7 @@ var servicesData = []Service{
 		Name:        "System weryfikacji",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -153,7 +222,7 @@ var servicesData = []Service{
 		Name:        "System raportowania",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -161,7 +230,7 @@ var servicesData = []Service{
 		Name:        "Panel administracyjny",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -169,7 +238,7 @@ var servicesData = []Service{
 		Name:        "System zgłoszeń",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -177,7 +246,7 @@ var servicesData = []Service{
 		Name:        "CND",
 		Status:      "operational",
 		Uptime:      "99.95%",
-		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC),
+		LastUpdated: time.Date(2025, 3, 24, 14, 30, 0, 0, time.UTC).Format("2006-01-02 15:04:05"),
 		Response:    "120ms",
 		LoadTrend:   []int{95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97},
 	},
@@ -548,9 +617,14 @@ func servicesHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Metoda niedozwolona", http.StatusMethodNotAllowed)
 		return
 	}
-
+	svcs, err := queryServices()
+	if err != nil {
+		log.Printf("Error querying services: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(servicesData)
+	json.NewEncoder(w).Encode(svcs)
 }
 
 func updateServiceHandler(w http.ResponseWriter, r *http.Request) {
@@ -565,11 +639,49 @@ func updateServiceHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Wyszukiwanie usługi po nazwie i aktualizacja jej danych.
 	found := false
+	now := time.Now().UTC()
 	for i, service := range servicesData {
 		if service.Name == updatedService.Name {
-			updatedService.LastUpdated = time.Now().UTC() // ustawiamy czas aktualizacji na teraz
+			// Aktualizacja lastUpdated na bieżący czas
+			updatedService.LastUpdated = now.Format("2006-01-02 15:04:05")
+
+			// Symulacja ping (response) – wartość losowa między 20ms a 120ms
+			simulatedPing := rand.Intn(101) + 20 // losuje liczbę od 20 do 120
+			updatedService.Response = fmt.Sprintf("%dms", simulatedPing)
+
+			// Aktualizacja uptime:
+			// Pobieramy poprzednią wartość uptime, usuwając znak '%' i parsując do float64
+			prevUptime, err := strconv.ParseFloat(strings.TrimSuffix(service.Uptime, "%"), 64)
+			if err != nil {
+				prevUptime = 100.0 // przyjmujemy 100% jeśli parsowanie się nie uda
+			}
+			var newUptime float64
+			if updatedService.Status == "operational" {
+				// Przykładowa formuła: 90% starej wartości + 10% idealnego 100%
+				newUptime = prevUptime*0.9 + 100*0.1
+			} else {
+				// Jeśli usługa nie działa – zmniejszamy uptime o 0.5%
+				newUptime = prevUptime - 0.5
+				if newUptime < 0 {
+					newUptime = 0
+				}
+			}
+			updatedService.Uptime = fmt.Sprintf("%.2f%%", newUptime)
+
+			// Aktualizacja loadTrend:
+			// Symulujemy obciążenie – losowa wartość między 90 a 100
+			simulatedLoad := rand.Intn(11) + 90 // losuje wartość od 90 do 100
+			var newLoadTrend []int
+			// Jeśli mamy już 11 wartości, przesuwamy (usuwamy najstarszy zapis) i dodajemy nową
+			if len(service.LoadTrend) >= 11 {
+				newLoadTrend = append(service.LoadTrend[1:], simulatedLoad)
+			} else {
+				newLoadTrend = append(service.LoadTrend, simulatedLoad)
+			}
+			updatedService.LoadTrend = newLoadTrend
+
+			// Zaktualizowana usługa zapisywana jest w tablicy
 			servicesData[i] = updatedService
 			found = true
 			break
@@ -593,8 +705,14 @@ func incidentsHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Metoda niedozwolona", http.StatusMethodNotAllowed)
 		return
 	}
+	incs, err := queryIncidents()
+	if err != nil {
+		log.Printf("Error querying incidents: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(incidentsData)
+	json.NewEncoder(w).Encode(incs)
 }
 
 func main() {
@@ -602,6 +720,7 @@ func main() {
 	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found, make sure environment variables are set")
 	}
+	initDB()
 	http.HandleFunc("/api/v1/test", logMiddleware(rateLimiterMiddleware(corsMiddleware(func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPost:

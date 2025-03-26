@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect, AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   CheckIcon, XIcon, AlertCircleIcon,
   ActivityIcon, ServerIcon, DatabaseIcon,
   ShieldIcon, FileTextIcon, GlobeIcon,
   ClockIcon, AlertTriangleIcon, InfoIcon,
-  MonitorIcon, NetworkIcon, BellIcon
+  MonitorIcon, NetworkIcon, BellIcon, Router
 } from "lucide-react";
 
 // Mapa ikon – używana, gdy z API nie przyjdzie ikona
@@ -69,34 +69,34 @@ const fallbackServices = [
     lastUpdated: "24.03.2025 14:30",
     response: "120ms",
     loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
-    },
-    {
-      name: "Panel administracyjny",
-      icon: serviceIconMap["Panel administracyjny"],
-      status: "failed",
-      uptime: "99.95%",
-      lastUpdated: "24.03.2025 14:30",
-      response: "120ms",
-      loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
-      },
-      {
-        name: "System zgłoszeń",
-        icon: serviceIconMap["System zgłoszeń"],
-        status: "failed",
-        uptime: "99.95%",
-        lastUpdated: "24.03.2025 14:30",
-        response: "120ms",
-        loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
-        },
-        {
-          name: "CND",
-          icon: serviceIconMap["CND"],
-          status: "failed",
-          uptime: "99.95%",
-          lastUpdated: "24.03.2025 14:30",
-          response: "120ms",
-          loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
-          },
+  },
+  {
+    name: "Panel administracyjny",
+    icon: serviceIconMap["Panel administracyjny"],
+    status: "failed",
+    uptime: "99.95%",
+    lastUpdated: "24.03.2025 14:30",
+    response: "120ms",
+    loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
+  },
+  {
+    name: "System zgłoszeń",
+    icon: serviceIconMap["System zgłoszeń"],
+    status: "failed",
+    uptime: "99.95%",
+    lastUpdated: "24.03.2025 14:30",
+    response: "120ms",
+    loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
+  },
+  {
+    name: "CDN",
+    icon: serviceIconMap["CDN"],
+    status: "failed",
+    uptime: "99.95%",
+    lastUpdated: "24.03.2025 14:30",
+    response: "120ms",
+    loadTrend: [95, 96, 94, 97, 99, 98, 97, 96, 97, 98, 97],
+  },
 ];
 
 const fallbackIncidents = [
@@ -129,20 +129,18 @@ export default function StatusPage() {
 
     try {
       const resServices = await fetch("http://localhost:8080/api/v1/services", {
-        headers: {
-          "x-api-key": "SCAMER.12lQiRgtyAWDZoBsUzhpihQZRmHpO8KuZvcuhulUv8ZMr5IlWJG9RZOjVl583dwZ"
-        }
+        headers: { "x-api-key": "SCAMER.12lQiRgtyAWDZoBsUzhpihQZRmHpO8KuZvcuhulUv8ZMr5IlWJG9RZOjVl583dwZ" }
       });
       if (resServices.ok) {
         const data = await resServices.json();
-        // Upewnij się, że każda usługa ma ikonę – jeśli nie, pobierz z mapy
+        // Dodanie ikony, jeśli jej nie ma
         const servicesWithIcon = data.map((service: any) => ({
           ...service,
           icon: service.icon || serviceIconMap[service.name] || <GlobeIcon className="w-5 h-5" />
         }));
         setServices(servicesWithIcon);
         servicesOk = true;
-        // Pobierz ping z nagłówka API (o ile API go zwraca) lub zastosuj pomiar czasu
+        // Pobranie ping – z nagłówka lub pomiar czasu
         const apiPing = resServices.headers.get("x-ping");
         setPing(apiPing ? Number(apiPing) : (Date.now() - startTime));
       } else {
@@ -154,9 +152,7 @@ export default function StatusPage() {
 
     try {
       const resIncidents = await fetch("http://localhost:8080/api/v1/incidents", {
-        headers: {
-          "x-api-key": "SCAMER.12lQiRgtyAWDZoBsUzhpihQZRmHpO8KuZvcuhulUv8ZMr5IlWJG9RZOjVl583dwZ"
-        }
+        headers: { "x-api-key": "SCAMER.12lQiRgtyAWDZoBsUzhpihQZRmHpO8KuZvcuhulUv8ZMr5IlWJG9RZOjVl583dwZ" }
       });
       if (resIncidents.ok) {
         const data = await resIncidents.json();
@@ -179,14 +175,15 @@ export default function StatusPage() {
     setIsLoading(false);
     setRefreshCountdown(60);
   };
-  // Co 60 sekund odświeżanie danych
+
+  // Odświeżanie danych co 60 sekund
   useEffect(() => {
     fetchData();
     const fetchInterval = setInterval(fetchData, 60000);
     return () => clearInterval(fetchInterval);
   }, []);
 
-  // Licznik odświeżania (co sekundę dekrementowany)
+  // Licznik odświeżania – dekrementacja co sekundę
   useEffect(() => {
     const countdownInterval = setInterval(() => {
       setRefreshCountdown(prev => (prev > 0 ? prev - 1 : 60));
@@ -203,29 +200,24 @@ export default function StatusPage() {
     );
   }
 
-  // Mapowanie status na kolory – jawnie zdefiniowane klasy Tailwind
+  // Funkcja mapująca status na kolor (dla Tailwind)
   const getStatusColor = (status: string) => {
     if (status === "operational") return "green";
     if (status === "partial_outage") return "amber";
     return "red";
   };
 
-  // Komponent karty serwisu – wyświetla ikonę, loadTrend, uptime itd.
+  // Komponent karty serwisu – wyświetla ikonę, uptime, response, lastUpdated oraz wykres loadTrend
   function ServiceCard({ service, index }: { service: any; index: number }) {
     const statusColor = getStatusColor(service.status);
     const borderHoverClass =
-      statusColor === "green"
-        ? "hover:border-green-500/50"
-        : statusColor === "amber"
-        ? "hover:border-amber-500/50"
-        : "hover:border-red-500/50";
+      statusColor === "green" ? "hover:border-green-500/50" :
+      statusColor === "amber" ? "hover:border-amber-500/50" : "hover:border-red-500/50";
     const bgColorClass =
-      statusColor === "green"
-        ? "bg-green-500"
-        : statusColor === "amber"
-        ? "bg-amber-500"
-        : "bg-red-500";
+      statusColor === "green" ? "bg-green-500" :
+      statusColor === "amber" ? "bg-amber-500" : "bg-red-500";
 
+    // Funkcja generująca punkty do wykresu loadTrend
     const sparklinePoints = () => {
       const height = 30;
       const width = 100;
@@ -246,11 +238,8 @@ export default function StatusPage() {
             points={normalizedPoints}
             fill="none"
             stroke={
-              statusColor === "green"
-                ? "rgb(34, 197, 94)"
-                : statusColor === "amber"
-                ? "rgb(245, 158, 11)"
-                : "rgb(239, 68, 68)"
+              statusColor === "green" ? "rgb(34, 197, 94)" :
+              statusColor === "amber" ? "rgb(245, 158, 11)" : "rgb(239, 68, 68)"
             }
             strokeWidth="1.5"
             strokeLinecap="round"
@@ -288,8 +277,8 @@ export default function StatusPage() {
               <div className="font-medium text-zinc-300">{service.response}</div>
             </div>
             <div>
-              <div className="text-zinc-500 mb-1">Ostatnio</div>
-              <div className="font-medium text-zinc-300">{service.lastUpdated.split(' ')[1]}</div>
+              <div className="text-zinc-500 mb-1">Ostatnia</div>
+              <div className="font-medium text-zinc-300">{service.lastUpdated.split(" ")[1]}</div>
             </div>
           </div>
           <div className="flex flex-col space-y-1">
@@ -307,6 +296,7 @@ export default function StatusPage() {
     );
   }
 
+  // Komponent statusu – wyświetla badge w zależności od statusu usługi
   function StatusBadge({ status }: { status: string }) {
     if (status === "operational") {
       return (
@@ -329,6 +319,19 @@ export default function StatusPage() {
     }
   }
 
+  // Komponent wyświetlający datę w badge
+  function CalendarBadge({ date }: { date: string }) {
+    return (
+      <Badge variant="outline" className="bg-zinc-900 border-zinc-700 text-zinc-400 font-normal">
+        <ClockIcon className="w-3 h-3 mr-1" /> {date}
+      </Badge>
+    );
+  }
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  };
+  
   function IncidentStatusBadge({ status }: { status: string }) {
     if (status === "resolved") {
       return (
@@ -351,18 +354,6 @@ export default function StatusPage() {
     }
   }
 
-  function CalendarBadge({ date }: { date: string }) {
-    return (
-      <Badge variant="outline" className="bg-zinc-900 border-zinc-700 text-zinc-400 font-normal">
-        <ClockIcon className="w-3 h-3 mr-1" /> {date}
-      </Badge>
-    );
-  }
-
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-  };
-
   return (
     <div className="container py-12 max-w-7xl mx-auto space-y-10">
       {/* Nagłówek strony */}
@@ -373,7 +364,7 @@ export default function StatusPage() {
         <h1 className="text-4xl font-bold tracking-tight text-white">Status systemów</h1>
         <p className="text-zinc-400 max-w-3xl">
           {loadError
-            ? "Dane nie są aktualnie dostępne – wygląda na to, że cała platforma ma problem."
+            ? "Dane nie są obecnie dostępne – wygląda na to, że cała platforma ma problem."
             : "Sprawdź aktualny status naszych systemów i usług w czasie rzeczywistym."}
         </p>
         <div className="text-sm text-zinc-500 flex items-center gap-4">
@@ -384,37 +375,7 @@ export default function StatusPage() {
         </div>
       </div>
 
-      {/* Ogólny status
-      <Card className={`overflow-hidden transition-all animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 border-2 ${services.every(s => s.status === "operational") ? 'border-green-500/50 dark:border-green-700/50 bg-green-500/5' : 'border-amber-500/50 dark:border-amber-700/50 bg-amber-500/5'}`}>
-        <div className={`absolute top-0 left-0 w-full h-1 ${services.every(s => s.status === "operational") ? 'bg-green-500' : 'bg-amber-500'}`}></div>
-        <CardHeader className="pb-2">
-          <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center text-2xl">
-              {services.every(s => s.status === "operational") ? (
-                <>
-                  <CheckIcon className="w-6 h-6 mr-2 text-green-500" />
-                  <span className="text-green-500">Wszystkie systemy działają poprawnie</span>
-                </>
-              ) : (
-                <>
-                  <AlertCircleIcon className="w-6 h-6 mr-2 text-amber-500" />
-                  <span className="text-amber-500">Niektóre systemy doświadczają problemów</span>
-                </>
-              )}
-            </CardTitle>
-            <div className="flex items-center text-sm text-zinc-500">
-              <ClockIcon className="w-4 h-4 mr-2" />
-              Ostatnia aktualizacja: 24.03.2025 14:30
-            </div>
-          </div>
-          <CardDescription className="text-zinc-500 mt-2 flex items-center">
-            <InfoIcon className="w-4 h-4 mr-2" />
-            Status monitorowany jest w czasie rzeczywistym.
-          </CardDescription>
-        </CardHeader>
-      </Card> */}
-
-      {/* Status poszczególnych usług */}
+      {/* Lista usług */}
       <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-semibold text-white">Status usług</h2>
@@ -428,7 +389,7 @@ export default function StatusPage() {
           ))}
         </div>
 
-        {/* Podsumowanie dostępności */}
+        {/* Podsumowanie dostępności (przykładowe statystyki) */}
         <Card className="overflow-hidden border border-zinc-800 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500 bg-zinc-900">
           <CardHeader className="pb-2">
             <CardTitle className="text-xl text-white">Dostępność systemów (30 dni)</CardTitle>
@@ -455,12 +416,13 @@ export default function StatusPage() {
           </CardContent>
         </Card>
       </div>
+      
 
       {/* Historia incydentów */}
       <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
         <h2 className="text-2xl font-semibold text-white">Historia incydentów</h2>
         <div className="space-y-4">
-          {incidents.map((incident, index) => (
+          {(incidents || []).map((incident, index) => (
             <Card key={index} className="overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-colors duration-300 bg-zinc-900" style={{ animationDelay: `${(index + 5) * 150}ms` }}>
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
@@ -477,7 +439,7 @@ export default function StatusPage() {
               <CardContent className="pt-0">
                 <div className="relative pl-6 before:absolute before:left-2 before:top-0 before:w-0.5 before:h-full before:bg-zinc-700">
                   <ul className="space-y-4 mt-3">
-                    {incident.updates.map((update: { time: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; message: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }, updateIndex: Key | null | undefined) => (
+                    {incident.updates.map((update: { time: string; message: string }, updateIndex: Key) => (
                       <li key={updateIndex} className="relative text-sm pl-6 pb-4">
                         <div className="absolute left-[-6px] top-1.5 w-3 h-3 rounded-full bg-zinc-800 border border-zinc-600"></div>
                         <div className="font-medium text-zinc-300 mb-1">{update.time}</div>

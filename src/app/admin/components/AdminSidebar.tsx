@@ -9,7 +9,8 @@ import {
   FileText,
   Bell,
   BarChart4,
-  LogOut
+  LogOut,
+  AlertTriangle
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -20,11 +21,12 @@ interface AdminSidebarProps {
 
 const menuItems = [
   { label: "Dashboard", icon: <Activity className="h-4 w-4" />, href: "/admin/dashboard" },
-  { label: "Zgłoszenia", icon: <Bell className="h-4 w-4" />, href: "/admin/dashboard/zgłoszenia", count: 12 },
-  { label: "Użytkownicy", icon: <Users className="h-4 w-4" />, href: "/admin/dashboard/użytkownicy" },
+  { label: "Zgłoszenia", icon: <Bell className="h-4 w-4" />, href: "/admin/dashboard/zgloszenia", count: 12 },
+  { label: "Użytkownicy", icon: <Users className="h-4 w-4" />, href: "/admin/dashboard/uzytkownicy" },
   { label: "Weryfikacja", icon: <ShieldCheck className="h-4 w-4" />, href: "/admin/dashboard/weryfikacja" },
   { label: "Raporty", icon: <FileText className="h-4 w-4" />, href: "/admin/dashboard/raporty" },
   { label: "Statystyki", icon: <BarChart4 className="h-4 w-4" />, href: "/admin/dashboard/statystyki" },
+  { label: "Incydenty", icon: <AlertTriangle className="h-4 w-4" />, href: "/admin/dashboard/incydenty" },
 ];
 
 export default function AdminSidebar({ activeItem }: AdminSidebarProps) {
